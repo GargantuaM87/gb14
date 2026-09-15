@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b8sklvums8d6i"]
+
+[ext_resource type="Script" uid="uid://twjiawo4emfa" path="res://screens/main/ground/npc/npc.gd" id="1_qxyoj"]
+
+[node name="Npc" type="Node2D" unique_id=1470620107]
+script = ExtResource("1_qxyoj")
+
+[node name="Person" type="Node2D" parent="." unique_id=1033390251]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="Person" unique_id=659993630]
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = -1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="Person" unique_id=355740105]
+offset_top = -4.0
+offset_right = 1.0
+offset_bottom = -2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="Person" unique_id=236690661]
+offset_left = -1.0
+offset_top = -5.0
+offset_right = 2.0
+offset_bottom = -3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Person" unique_id=401738339]
+offset_top = -1.0
+offset_right = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="Person" unique_id=1742680520]
+offset_left = -1.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect7" type="ColorRect" parent="Person" unique_id=1814940267]
+offset_left = -2.0
+offset_top = 1.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect8" type="ColorRect" parent="Person" unique_id=853121921]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="Person" unique_id=120832589]
+offset_left = 1.0
+offset_right = 2.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true

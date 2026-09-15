@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dberwleuxd1et"]
+
+[ext_resource type="Script" uid="uid://n75qnkc85lnl" path="res://screens/main/hud/hud.gd" id="1_qivny"]
+[ext_resource type="FontFile" uid="uid://lngqtr531ilb" path="res://fonts/Silkscreen-Regular.ttf" id="2_xn5oh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vbx3x"]
+font = ExtResource("2_xn5oh")
+font_size = 8
+
+[node name="Hud" type="Node2D" unique_id=299411011]
+script = ExtResource("1_qivny")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="." unique_id=638899999]
+offset_left = 2.0
+offset_right = 158.0
+offset_bottom = 15.0
+
+[node name="Label" type="Label" parent="HFlowContainer" unique_id=1411664318]
+layout_mode = 2
+text = "Money:"
+label_settings = SubResource("LabelSettings_vbx3x")
+
+[node name="MoneyLabel" type="Label" parent="HFlowContainer" unique_id=1365757514]
+unique_name_in_owner = true
+layout_mode = 2
+text = "$123"
+label_settings = SubResource("LabelSettings_vbx3x")
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="." unique_id=1195863706]
+offset_left = 2.0
+offset_top = 12.0
+offset_right = 158.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="HFlowContainer2" unique_id=467641913]
+layout_mode = 2
+text = "Next wave in:"
+label_settings = SubResource("LabelSettings_vbx3x")
+
+[node name="TimeLeftLabel" type="Label" parent="HFlowContainer2" unique_id=161722390]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0:59"
+label_settings = SubResource("LabelSettings_vbx3x")
+
+[node name="HFlowContainer3" type="HFlowContainer" parent="." unique_id=1395047117]
+offset_left = 2.0
+offset_top = 24.0
+offset_right = 158.0
+offset_bottom = 39.0
+
+[node name="Label" type="Label" parent="HFlowContainer3" unique_id=27315457]
+layout_mode = 2
+text = "Shield:"
+label_settings = SubResource("LabelSettings_vbx3x")
+
+[node name="ShieldHpLabel" type="Label" parent="HFlowContainer3" unique_id=1310569586]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100 HP"
+label_settings = SubResource("LabelSettings_vbx3x")

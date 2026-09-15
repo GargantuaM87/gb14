@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d1ok0fbbbbv7x"]
+
+[ext_resource type="PackedScene" uid="uid://b8sklvums8d6i" path="res://screens/main/ground/npc/npc.tscn" id="1_etrbd"]
+
+[node name="Ground" type="Node2D" unique_id=1403974766]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2069015850]
+offset_left = -2119.0
+offset_top = -1.0
+offset_right = 2121.0
+offset_bottom = 1.0
+
+[node name="Npc" parent="." unique_id=1470620107 instance=ExtResource("1_etrbd")]
+position = Vector2(-1, -4)
+
+[node name="Npc2" parent="." unique_id=1820374930 instance=ExtResource("1_etrbd")]
+position = Vector2(63, -4)
+
+[node name="Npc3" parent="." unique_id=411561743 instance=ExtResource("1_etrbd")]
+position = Vector2(101, -4)
+
+[node name="Npc4" parent="." unique_id=1169025987 instance=ExtResource("1_etrbd")]
+position = Vector2(-13, -4)
+
+[node name="Npc5" parent="." unique_id=1931774976 instance=ExtResource("1_etrbd")]
+position = Vector2(-63, -4)
+
+[node name="Npc6" parent="." unique_id=461475160 instance=ExtResource("1_etrbd")]
+position = Vector2(-129, -4)
+
+[node name="Npc7" parent="." unique_id=440596861 instance=ExtResource("1_etrbd")]
+position = Vector2(-210, -4)
+
+[node name="Npc10" parent="." unique_id=385197102 instance=ExtResource("1_etrbd")]
+position = Vector2(-349, -4)
+
+[node name="Npc11" parent="." unique_id=1057126105 instance=ExtResource("1_etrbd")]
+position = Vector2(-548, -4)
+
+[node name="Npc8" parent="." unique_id=1164496114 instance=ExtResource("1_etrbd")]
+position = Vector2(179, -4)
+
+[node name="Npc9" parent="." unique_id=180669230 instance=ExtResource("1_etrbd")]
+position = Vector2(303, -4)
+
+[node name="Npc12" parent="." unique_id=1133404862 instance=ExtResource("1_etrbd")]
+position = Vector2(449, -4)

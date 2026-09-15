@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://br13io0f3rxhf"]
+
+[ext_resource type="FontFile" uid="uid://jutrjakywjh3" path="res://fonts/Tiny5-Regular.ttf" id="1_iei76"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esfnt"]
+bg_color = Color(0.38625076, 0.38625088, 0.38625073, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_esfnt"]
+line_spacing = 0.0
+font = ExtResource("1_iei76")
+font_size = 8
+
+[node name="ShopNotification" type="Node2D" unique_id=536382147]
+
+[node name="Panel" type="Panel" parent="." unique_id=397728628]
+offset_left = -23.0
+offset_top = -11.0
+offset_right = 24.0
+offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_esfnt")
+
+[node name="Label" type="Label" parent="." unique_id=1274210999]
+custom_minimum_size = Vector2(38, 22)
+offset_left = -17.0
+offset_top = -9.0
+offset_right = 21.0
+offset_bottom = 13.0
+text = "Press B to enter shop"
+label_settings = SubResource("LabelSettings_esfnt")
+autowrap_mode = 2

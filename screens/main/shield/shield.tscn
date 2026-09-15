@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ba0ckknomqk44"]
+
+[ext_resource type="Script" uid="uid://btn80sxvmpmmh" path="res://screens/main/shield/shield.gd" id="1_jiv6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4jc6"]
+size = Vector2(4240, 4)
+
+[node name="Shield" type="Node2D" unique_id=465698921]
+script = ExtResource("1_jiv6p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1030492361]
+offset_left = -2119.0
+offset_top = -2.0
+offset_right = 2121.0
+offset_bottom = 2.0
+color = Color(0.663046, 0.8853184, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=755294974]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1936961791]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_m4jc6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1527383958]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1128276360]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_m4jc6")

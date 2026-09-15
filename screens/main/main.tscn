@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://cv5a6vc6okik7"]
 
+[ext_resource type="Script" uid="uid://c8x7ipo3c58ct" path="res://screens/main/main.gd" id="1_h47hb"]
 [ext_resource type="Shader" uid="uid://dmggckpaxtqb6" path="res://screens/main/color_palette.gdshader" id="1_j5age"]
+[ext_resource type="PackedScene" uid="uid://dberwleuxd1et" path="res://screens/main/hud/hud.tscn" id="3_4eq7x"]
+[ext_resource type="PackedScene" uid="uid://by0pa4rr2ty8m" path="res://screens/main/player/player.tscn" id="4_tubg1"]
+[ext_resource type="PackedScene" uid="uid://hscc2e85bn4m" path="res://screens/main/gold/gold.tscn" id="5_q8oy7"]
+[ext_resource type="PackedScene" uid="uid://br13io0f3rxhf" path="res://screens/main/shop_notification/shop_notification.tscn" id="5_vhluw"]
+[ext_resource type="PackedScene" uid="uid://ba0ckknomqk44" path="res://screens/main/shield/shield.tscn" id="6_qne8x"]
+[ext_resource type="PackedScene" uid="uid://d1ok0fbbbbv7x" path="res://screens/main/ground/ground.tscn" id="7_4nmqe"]
+[ext_resource type="PackedScene" uid="uid://cfsrsyc2pvi34" path="res://screens/main/weapons/weapon_1/weapon_1.tscn" id="8_126cu"]
+[ext_resource type="PackedScene" uid="uid://cgwt5ibxdbyq4" path="res://screens/shop/shop.tscn" id="9_j6p4r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggonf"]
 shader = ExtResource("1_j5age")
@@ -13,10 +22,12 @@ shader_parameter/threshold_2 = 0.5
 shader_parameter/threshold_3 = 0.75
 
 [node name="Main" type="Node2D" unique_id=574003333]
+script = ExtResource("1_h47hb")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=173367466]
+[node name="PaletteEnforcerLayer" type="CanvasLayer" parent="." unique_id=173367466]
+layer = 1000
 
-[node name="PaletteEnforcer" type="ColorRect" parent="CanvasLayer" unique_id=1960881425]
+[node name="PaletteEnforcer" type="ColorRect" parent="PaletteEnforcerLayer" unique_id=1960881425]
 material = SubResource("ShaderMaterial_ggonf")
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,3 +35,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ScreenOverlay" type="CanvasLayer" parent="." unique_id=435230987]
+
+[node name="Hud" parent="ScreenOverlay" unique_id=299411011 instance=ExtResource("3_4eq7x")]
+
+[node name="Shop" parent="ScreenOverlay" unique_id=147810324 instance=ExtResource("9_j6p4r")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ShopNotification" parent="ScreenOverlay" unique_id=536382147 instance=ExtResource("5_vhluw")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(133, 131)
+
+[node name="WaveCountdownTimer" type="Timer" parent="." unique_id=674317358]
+autostart = true
+
+[node name="Player" parent="." unique_id=390699115 instance=ExtResource("4_tubg1")]
+unique_name_in_owner = true
+position = Vector2(75, 67)
+
+[node name="Camera" type="Camera2D" parent="Player" unique_id=1020711808]
+unique_name_in_owner = true
+position = Vector2(5, 5)
+
+[node name="Level" type="Node2D" parent="." unique_id=1027958237]
+
+[node name="Gold" parent="Level" unique_id=154610622 instance=ExtResource("5_q8oy7")]
+position = Vector2(43, 112)
+
+[node name="Gold2" parent="Level" unique_id=25144972 instance=ExtResource("5_q8oy7")]
+position = Vector2(88, 104)
+
+[node name="Gold3" parent="Level" unique_id=710014583 instance=ExtResource("5_q8oy7")]
+position = Vector2(104, 120)
+
+[node name="Gold4" parent="Level" unique_id=1628442680 instance=ExtResource("5_q8oy7")]
+position = Vector2(71, 122)
+value = 10
+
+[node name="Shield" parent="Level" unique_id=465698921 instance=ExtResource("6_qne8x")]
+position = Vector2(-1, 22)
+
+[node name="Ground" parent="Level" unique_id=1403974766 instance=ExtResource("7_4nmqe")]
+unique_name_in_owner = true
+position = Vector2(0, 48)
+
+[node name="Monsters" type="Node2D" parent="." unique_id=1462785049]
+unique_name_in_owner = true
+
+[node name="MonsterSpawnPosition" type="Marker2D" parent="Monsters" unique_id=749265805]
+unique_name_in_owner = true
+position = Vector2(76, -91)
+
+[node name="Weapons" type="Node2D" parent="." unique_id=1352723919]
+
+[node name="Weapon1" parent="Weapons" unique_id=258549074 node_paths=PackedStringArray("projectile_spawn_node_path") instance=ExtResource("8_126cu")]
+position = Vector2(80, 45)
+projectile_spawn_node_path = NodePath("..")
+
+[connection signal="timeout" from="WaveCountdownTimer" to="." method="_on_wave_countdown_timer_timeout"]

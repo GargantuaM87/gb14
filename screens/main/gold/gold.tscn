@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://hscc2e85bn4m"]
+
+[ext_resource type="Script" uid="uid://f4yclgkl4caq" path="res://screens/main/gold/gold.gd" id="1_ja1it"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbx3x"]
+size = Vector2(6, 6)
+
+[node name="Gold" type="Node2D" unique_id=154610622]
+script = ExtResource("1_ja1it")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=161658715]
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 3.0
+offset_bottom = 2.0
+color = Color(1, 1, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1778560244]
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 3.0
+color = Color(1, 1, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1497755533]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=381955762]
+shape = SubResource("RectangleShape2D_vbx3x")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
