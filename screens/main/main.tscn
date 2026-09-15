@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cv5a6vc6okik7"]
+
+[ext_resource type="Shader" uid="uid://dmggckpaxtqb6" path="res://screens/main/color_palette.gdshader" id="1_j5age"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggonf"]
+shader = ExtResource("1_j5age")
+shader_parameter/darkest = Color(0.137, 0.224, 0.2, 1)
+shader_parameter/dark = Color(0.639, 0.341, 0.306, 1)
+shader_parameter/light = Color(0.902, 0.725, 0.353, 1)
+shader_parameter/lightest = Color(0.835, 0.847, 0.82, 1)
+shader_parameter/threshold_1 = 0.25
+shader_parameter/threshold_2 = 0.5
+shader_parameter/threshold_3 = 0.75
+
+[node name="Main" type="Node2D" unique_id=574003333]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=173367466]
+
+[node name="PaletteEnforcer" type="ColorRect" parent="CanvasLayer" unique_id=1960881425]
+material = SubResource("ShaderMaterial_ggonf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
