@@ -1,0 +1,25 @@
+[gd_scene format=4 uid="uid://cc56p4dmpnqpv"]
+
+[ext_resource type="Texture2D" uid="uid://tmlju2quy8v5" path="res://screens/main/level/tiles.png" id="1_8ydgx"]
+[ext_resource type="Script" uid="uid://63sad7xymx7v" path="res://screens/main/level/level.gd" id="1_qcexc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qcexc"]
+texture = ExtResource("1_8ydgx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fjxey"]
+sources/0 = SubResource("TileSetAtlasSource_qcexc")
+
+[node name="Level" type="Node2D" unique_id=1072253959]
+script = ExtResource("1_qcexc")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1793497409]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAD5/wEAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_fjxey")
