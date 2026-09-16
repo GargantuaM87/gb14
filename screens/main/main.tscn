@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://behemfs6ssxgt" path="res://screens/main/camera.gd" id="2_i6tjv"]
 [ext_resource type="PackedScene" uid="uid://dberwleuxd1et" path="res://screens/main/hud/hud.tscn" id="3_4eq7x"]
 [ext_resource type="PackedScene" uid="uid://by0pa4rr2ty8m" path="res://screens/main/player/player.tscn" id="4_tubg1"]
-[ext_resource type="PackedScene" uid="uid://hscc2e85bn4m" path="res://screens/main/gold/gold.tscn" id="5_q8oy7"]
 [ext_resource type="PackedScene" uid="uid://br13io0f3rxhf" path="res://screens/main/shop_notification/shop_notification.tscn" id="5_vhluw"]
 [ext_resource type="PackedScene" uid="uid://ba0ckknomqk44" path="res://screens/main/shield/shield.tscn" id="6_qne8x"]
 [ext_resource type="PackedScene" uid="uid://d1ok0fbbbbv7x" path="res://screens/main/ground/ground.tscn" id="7_4nmqe"]
@@ -66,19 +65,6 @@ position = Vector2(3, 37)
 level = NodePath("../Level/Level")
 
 [node name="Level" type="Node2D" parent="." unique_id=1027958237]
-
-[node name="Gold" parent="Level" unique_id=154610622 instance=ExtResource("5_q8oy7")]
-position = Vector2(43, 112)
-
-[node name="Gold2" parent="Level" unique_id=25144972 instance=ExtResource("5_q8oy7")]
-position = Vector2(88, 104)
-
-[node name="Gold3" parent="Level" unique_id=710014583 instance=ExtResource("5_q8oy7")]
-position = Vector2(104, 120)
-
-[node name="Gold4" parent="Level" unique_id=1628442680 instance=ExtResource("5_q8oy7")]
-position = Vector2(71, 122)
-value = 10
 
 [node name="Shield" parent="Level" unique_id=465698921 instance=ExtResource("6_qne8x")]
 position = Vector2(-1, 22)

@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
+const GOLD_SCENE: PackedScene = preload("uid://hscc2e85bn4m")
 
 const LEVEL_WIDTH := 10 * 3
 const LEVEL_HEIGHT := 8 * 10
@@ -23,6 +24,7 @@ class Cell:
 	var type: CellType
 	var health: int
 	var max_health: int
+	var gold_value := 0
 	var is_revealed := false
 	
 class DepthProperties:
@@ -30,20 +32,24 @@ class DepthProperties:
 	var dirt_health: int
 	var unbreakable_chance: float
 	var empty_chance: float
+	var gold_chance: float
+	var gold_value: int
 
-	func _init(in_height: int, in_dirt_health: int, in_unbreakable_chance: float, in_empty_chance: float) -> void:
+	func _init(in_height: int, in_dirt_health: int, in_unbreakable_chance: float, in_empty_chance: float, in_gold_chance: float, in_gold_value: int) -> void:
 		self.height = in_height
 		self.dirt_health = in_dirt_health
 		self.unbreakable_chance = in_unbreakable_chance
 		self.empty_chance = in_empty_chance
+		self.gold_chance = in_gold_chance
+		self.gold_value = in_gold_value
 
 var depths: Array[DepthProperties] = [
-	DepthProperties.new(10, 5, 0.01, 0.15),
-	DepthProperties.new(10, 10, 0.05, 0.11),
-	DepthProperties.new(10, 15, 0.05, 0.08),
-	DepthProperties.new(10, 20, 0.07, 0.05),
-	DepthProperties.new(10, 25, 0.08, 0.05),
-	DepthProperties.new(100, 25, 0.08, 0.03),
+	DepthProperties.new(10, 5, 0.01, 0.15, 0.10, 1),
+	DepthProperties.new(10, 10, 0.05, 0.11, 0.10, 3),
+	DepthProperties.new(10, 15, 0.05, 0.08, 0.07, 5),
+	DepthProperties.new(10, 20, 0.07, 0.05, 0.07, 10),
+	DepthProperties.new(10, 25, 0.08, 0.05, 0.07, 15),
+	DepthProperties.new(100, 25, 0.08, 0.03, 0.07, 20),
 ]
 
 var level_data: Dictionary[Vector2i, Cell] = {}
@@ -101,8 +107,19 @@ func _generate_depth(start_y: int, end_y: int, properties: DepthProperties) -> v
 	for i in range(unbreakable_count):
 		level_data[eligible_coordinates.pop_back()].type = CellType.UNBREAKABLE
 
+	var gold_count := roundi(float(eligible_coordinates.size()) * properties.gold_chance)
+	for i in range(gold_count):
+		level_data[eligible_coordinates.pop_back()].gold_value = properties.gold_value
+
 func _reveal_cell(start_coordinate: Vector2i) -> void:
 	var reveal_stack: Array[Vector2i] = [start_coordinate]
+	var reveal_directions: Array[Vector2i] = [
+		Vector2i.UP, Vector2i.LEFT, Vector2i.RIGHT, Vector2i.DOWN
+	]
+	var draw_directions: Array[Vector2i] = [
+		Vector2i.UP + Vector2i.LEFT, Vector2i.UP + Vector2i.RIGHT,
+		Vector2i.DOWN + Vector2i.LEFT, Vector2i.DOWN + Vector2i.RIGHT
+	]
 
 	while !reveal_stack.is_empty():
 		var coordinate: Vector2i = reveal_stack.pop_back()
@@ -115,11 +132,11 @@ func _reveal_cell(start_coordinate: Vector2i) -> void:
 
 		if cell.type != CellType.EMPTY:
 			continue
-
-		reveal_stack.append(coordinate + Vector2i.LEFT)
-		reveal_stack.append(coordinate + Vector2i.RIGHT)
-		reveal_stack.append(coordinate + Vector2i.UP)
-		reveal_stack.append(coordinate + Vector2i.DOWN)
+	
+		for direction in reveal_directions:
+			reveal_stack.append(coordinate + direction)
+		for direction in draw_directions:
+			_update_tile_map_cell(coordinate + direction)
 
 func _update_tile_map_cell(coordinate: Vector2i) -> void:
 	var cell: Cell = level_data.get(coordinate)
@@ -135,7 +152,8 @@ func _update_tile_map_cell(coordinate: Vector2i) -> void:
 	if cell.max_health > 0:
 		health_ratio = clampf(float(cell.health) / cell.max_health, 0.0, 1.0)
 	var dirt_frame := roundi((1.0 - health_ratio) * 5.0)
-	tile_map_layer.set_cell(coordinate, 0, Vector2i(dirt_frame, 0))
+	var dirt_row := 2 if cell.gold_value > 0 else 0
+	tile_map_layer.set_cell(coordinate, 0, Vector2i(dirt_frame, dirt_row))
 
 func do_damage(coordinate: Vector2i, damage: int) -> bool:
 	if damage <= 0:
@@ -148,10 +166,20 @@ func do_damage(coordinate: Vector2i, damage: int) -> bool:
 	cell.health = maxi(cell.health - damage, 0)
 	var destroyed := cell.health == 0
 	if destroyed:
+		var gold_value := cell.gold_value
+		cell.gold_value = 0
 		cell.type = CellType.EMPTY
 		cell.is_revealed = false
 		_reveal_cell(coordinate)
+		if gold_value > 0:
+			_spawn_gold(coordinate, gold_value)
 	else:
 		_update_tile_map_cell(coordinate)
 
 	return destroyed
+
+func _spawn_gold(coordinate: Vector2i, value: int) -> void:
+	var gold := GOLD_SCENE.instantiate() as Gold
+	gold.value = value
+	gold.position = Vector2(coordinate * TILE_SIZE) + Vector2.ONE * (TILE_SIZE / 2.0)
+	add_child(gold)
