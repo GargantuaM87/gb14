@@ -118,3 +118,7 @@ func rangef_inc(start: float, end_inclusive: float, step: float) -> Array[float]
 
 func is_exported_build() -> bool:
 	return OS.has_feature("template")
+
+func fatal_error(message: String) -> void:
+	push_error(message)
+	get_tree().quit(1)

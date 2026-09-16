@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8x7ipo3c58ct" path="res://screens/main/main.gd" id="1_h47hb"]
 [ext_resource type="Shader" uid="uid://dmggckpaxtqb6" path="res://screens/main/color_palette.gdshader" id="1_j5age"]
+[ext_resource type="Script" uid="uid://behemfs6ssxgt" path="res://screens/main/camera.gd" id="2_i6tjv"]
 [ext_resource type="PackedScene" uid="uid://dberwleuxd1et" path="res://screens/main/hud/hud.tscn" id="3_4eq7x"]
 [ext_resource type="PackedScene" uid="uid://by0pa4rr2ty8m" path="res://screens/main/player/player.tscn" id="4_tubg1"]
 [ext_resource type="PackedScene" uid="uid://hscc2e85bn4m" path="res://screens/main/gold/gold.tscn" id="5_q8oy7"]
@@ -24,6 +25,12 @@ shader_parameter/threshold_3 = 0.75
 
 [node name="Main" type="Node2D" unique_id=574003333]
 script = ExtResource("1_h47hb")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1020711808 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+position = Vector2(8, 42)
+script = ExtResource("2_i6tjv")
+player = NodePath("../Player")
 
 [node name="PaletteEnforcerLayer" type="CanvasLayer" parent="." unique_id=173367466]
 layer = 1000
@@ -57,10 +64,6 @@ autostart = true
 unique_name_in_owner = true
 position = Vector2(3, 37)
 level = NodePath("../Level/Level")
-
-[node name="Camera" type="Camera2D" parent="Player" unique_id=1020711808]
-unique_name_in_owner = true
-position = Vector2(5, 5)
 
 [node name="Level" type="Node2D" parent="." unique_id=1027958237]
 

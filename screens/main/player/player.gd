@@ -3,16 +3,19 @@ extends CharacterBody2D
 
 const PLAYER_WIDTH := 10
 const PLAYER_HEIGHT := 10
-const SPEED := 100.0
 var tile_position: Vector2 = Vector2(0, -1)
 @export var level: Level
 
+var drill_damage := 1
+var drills_per_second := 4.0
+var last_drill_time := -10.0
+
 const TILE_MOVEMENT_DELAY := 0.2
-var last_move_time := 0.0
+var last_move_time := -10.0
 
 func _ready() -> void:
-	if not level:
-		push_error("Player: Level is not set.")
+	if !level:
+		Util.fatal_error("Player: Level is not set.")
 
 	_update_self_position()
 	
@@ -28,22 +31,55 @@ func _physics_process(_delta: float) -> void:
 	if GlobalState.is_shop_open:
 		return
 	
-	if Util.time - last_move_time < TILE_MOVEMENT_DELAY:
+	# If you repeatedly tap a direction, the player will move in that direction
+	# even if TILE_MOVEMENT_DELAY has not passed since last movement.
+	var direction := _get_just_pressed_movement_direction()
+	if direction == Vector2i.ZERO:
+		if Util.time - last_move_time < TILE_MOVEMENT_DELAY:
+			return
+		direction = _get_movement_direction()
+	if direction == Vector2i.ZERO:
 		return
 
-	var direction := Input.get_vector("left", "right", "up", "down")
+	var target_tile := Vector2i(tile_position) + direction
+	target_tile.x = clampi(target_tile.x, Level.LEVEL_X_MIN, Level.LEVEL_X_MAX)
+	target_tile.y = clampi(target_tile.y, Level.LEVEL_Y_MIN - 1, Level.LEVEL_Y_MAX)
 
-	if absf(direction.x) > absf(direction.y):
-		if direction.x > 0:
-			tile_position.x += 1
-		else:
-			tile_position.x -= 1
-	elif absf(direction.y) > absf(direction.x):
-		if direction.y > 0:
-			tile_position.y += 1
-		else:
-			tile_position.y -= 1
+	var cell: Level.Cell = level.level_data.get(target_tile)
+	if cell == null || cell.type == Level.CellType.EMPTY:
+		tile_position = Vector2(target_tile)
+		_update_self_position()
+		return
 
-	tile_position.x = clamp(tile_position.x, Level.LEVEL_X_MIN, Level.LEVEL_X_MAX)
-	tile_position.y = clamp(tile_position.y, Level.LEVEL_Y_MIN - 1, Level.LEVEL_Y_MAX)
-	_update_self_position()
+	if cell.type != Level.CellType.DIRT:
+		return
+	
+	assert(drills_per_second > 0.0 && drill_damage > 0)
+
+	var drill_interval := 1.0 / drills_per_second
+	if Util.time - last_drill_time < drill_interval:
+		return
+
+	last_drill_time = Util.time
+	if level.do_damage(target_tile, drill_damage):
+		last_move_time = Util.time # This ensures that we don't move into the tile we just destroyed until TILE_MOVEMENT_DELAY has passed.
+
+func _get_just_pressed_movement_direction() -> Vector2i:
+	var input_direction := Vector2.ZERO
+	input_direction.x = float(Input.is_action_just_pressed("right")) - float(Input.is_action_just_pressed("left"))
+	input_direction.y = float(Input.is_action_just_pressed("down")) - float(Input.is_action_just_pressed("up"))
+
+	if absf(input_direction.x) > absf(input_direction.y):
+		return Vector2i.RIGHT if input_direction.x > 0.0 else Vector2i.LEFT
+	if absf(input_direction.y) > absf(input_direction.x):
+		return Vector2i.DOWN if input_direction.y > 0.0 else Vector2i.UP
+	return Vector2i.ZERO
+
+func _get_movement_direction() -> Vector2i:
+	var input_direction := Input.get_vector("left", "right", "up", "down")
+
+	if absf(input_direction.x) > absf(input_direction.y):
+		return Vector2i.RIGHT if input_direction.x > 0.0 else Vector2i.LEFT
+	if absf(input_direction.y) > absf(input_direction.x):
+		return Vector2i.DOWN if input_direction.y > 0.0 else Vector2i.UP
+	return Vector2i.ZERO
