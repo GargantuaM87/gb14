@@ -31,6 +31,11 @@ position = Vector2(8, 42)
 script = ExtResource("2_i6tjv")
 player = NodePath("../Player")
 
+[node name="Camera" type="Camera2D" parent="Camera" unique_id=623790907 node_paths=PackedStringArray("player")]
+position = Vector2(8, 42)
+script = ExtResource("2_i6tjv")
+player = NodePath("../../Player")
+
 [node name="PaletteEnforcerLayer" type="CanvasLayer" parent="." unique_id=173367466]
 layer = 1000
 
@@ -86,7 +91,11 @@ position = Vector2(76, -91)
 [node name="Weapons" type="Node2D" parent="." unique_id=1352723919]
 
 [node name="Weapon1" parent="Weapons" unique_id=258549074 node_paths=PackedStringArray("projectile_spawn_node_path") instance=ExtResource("8_126cu")]
-position = Vector2(80, 45)
+position = Vector2(122, 45)
+projectile_spawn_node_path = NodePath("..")
+
+[node name="Weapon2" parent="Weapons" unique_id=274074307 node_paths=PackedStringArray("projectile_spawn_node_path") instance=ExtResource("8_126cu")]
+position = Vector2(22, 45)
 projectile_spawn_node_path = NodePath("..")
 
 [connection signal="timeout" from="WaveCountdownTimer" to="." method="_on_wave_countdown_timer_timeout"]

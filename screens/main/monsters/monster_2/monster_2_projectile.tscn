@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bgc7ptaqd8lxg"]
+
+[ext_resource type="Script" uid="uid://dwrbvgxnlup6u" path="res://screens/main/monsters/monster_2/monster_2_projectile.gd" id="1_01p3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbx3x"]
+size = Vector2(2, 2)
+
+[node name="Monster2Projectile" type="Node2D" unique_id=1271025032 groups=["monster_projectiles"]]
+script = ExtResource("1_01p3k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=273558742]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+color = Color(0.78039217, 0.2627451, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=427668099]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2033134971]
+shape = SubResource("RectangleShape2D_vbx3x")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

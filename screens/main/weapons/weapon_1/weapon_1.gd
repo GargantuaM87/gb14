@@ -12,18 +12,23 @@ func _physics_process(_delta: float) -> void:
 	if Util.time - last_search_time > SECONDS_BETWEEN_SHOTS:
 		last_search_time = Util.time
 
-		var monsters := get_tree().get_nodes_in_group("monsters")
-		var closest_monster: Monster = null
-		var closest_distance := 100.0
-		for monster: Monster in monsters:
-			var distance_to_monster := monster.position.distance_to(position)
-			if distance_to_monster < closest_distance:
-				closest_monster = monster
-				closest_distance = distance_to_monster
+		# Primary target: Monsters
+		var targets := get_tree().get_nodes_in_group("monsters")
+		if targets.is_empty():
+			# Secondary target: Monster projectiles
+			targets = get_tree().get_nodes_in_group("monster_projectiles")
 
-		if closest_monster != null:
+		var closest_target: Node2D = null
+		var closest_distance := INF
+		for target: Node2D in targets:
+			var distance_to_target := target.global_position.distance_to(global_position)
+			if distance_to_target < closest_distance:
+				closest_target = target
+				closest_distance = distance_to_target
+
+		if closest_target != null:
 			var projectile: Node2D = projectile_scene.instantiate()
 			projectile.damage = DAMAGE
-			projectile.direction = projectile_spawn_point.global_position.direction_to(closest_monster.global_position)
+			projectile.direction = projectile_spawn_point.global_position.direction_to(closest_target.global_position)
 			projectile_spawn_node_path.add_child(projectile)
 			projectile.global_position = projectile_spawn_point.global_position

@@ -22,3 +22,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	var monster: Monster = Util.find_ancestor_in_group(area, "monsters")
 	if monster:
 		monster.take_damage(damage)
+	else:
+		var monster_projectile: MonsterProjectile = Util.find_ancestor_in_group(area, "monster_projectiles")
+		if monster_projectile:
+			monster_projectile.take_damage(damage)

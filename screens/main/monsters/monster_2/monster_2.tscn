@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://tprv2crptn14"]
+
+[ext_resource type="Script" uid="uid://bctip5hk046yk" path="res://screens/main/monsters/monster_2/monster_2.gd" id="1_sy168"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbx3x"]
+size = Vector2(14, 6)
+
+[node name="Monster2" type="Node2D" unique_id=1222954009 groups=["monsters"]]
+script = ExtResource("1_sy168")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1642742124]
+offset_left = -7.0
+offset_top = -3.0
+offset_right = 7.0
+offset_bottom = -1.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1801431228]
+offset_left = 6.0
+offset_top = -3.0
+offset_right = 7.0
+offset_bottom = 3.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=2067915584]
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1.0
+offset_bottom = 1.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=1666200434]
+offset_left = -7.0
+offset_top = -3.0
+offset_right = -6.0
+offset_bottom = 3.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1896813591]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2117448837]
+shape = SubResource("RectangleShape2D_vbx3x")
