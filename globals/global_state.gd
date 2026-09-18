@@ -9,10 +9,11 @@ var seconds_until_next_wave := 120:
 	set(value):
 		seconds_until_next_wave = value
 		EventBus.trigger_seconds_until_next_wave_changed()
-
-var shield_health := 100:
+var max_shield_health := 100
+var shield_health := max_shield_health:
 	set(value):
-		shield_health = value
+		if value <= max_shield_health:
+			shield_health = value
 		EventBus.trigger_shield_health_changed()
 
 var is_shop_open := false

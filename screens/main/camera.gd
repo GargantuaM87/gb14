@@ -5,6 +5,14 @@ extends Camera2D
 
 var _smoothed_position := Vector2.ZERO
 var _is_initialized := false
+# Shake Parameters
+@export_group("Shake")
+@export var decay : float = 0.6
+@export var max_offset : Vector2 = Vector2(100, 75)
+@export var max_roll : float = 0.1 
+
+var trauma = 0.0
+var trauma_power = 2
 
 func _process(delta: float) -> void:
 	if !player:
