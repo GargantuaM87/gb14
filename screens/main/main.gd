@@ -13,6 +13,7 @@ const WAVE_LENGTH_SECONDS := 10
 var monster_scenes := [
 	preload("uid://bapq6tesgu84k"),
 	preload("uid://tprv2crptn14"),
+	preload("uid://dxmfm0d5pmloh"),
 ]
 
 func _ready() -> void:
