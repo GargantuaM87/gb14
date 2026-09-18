@@ -1,5 +1,13 @@
 extends Node2D
 
+class MonsterType:
+	var scene: PackedScene
+	var first_wave: int
+
+	func _init(in_scene: PackedScene, in_first_wave: int) -> void:
+		scene = in_scene
+		first_wave = in_first_wave
+
 @onready var monsters: Node2D = %Monsters
 @onready var player: Player = %Player
 @onready var ground: Node2D = %Ground
@@ -9,14 +17,20 @@ extends Node2D
 @onready var shop_notification: Node2D = %ShopNotification
 
 const WAVE_LENGTH_SECONDS := 10
+const BASE_MONSTER_COUNT := 3
+const SPAWN_X_MIN := -80.0
+const SPAWN_X_MAX := 80.0
 
-var monster_scenes := [
-	preload("uid://bapq6tesgu84k"),
-	preload("uid://tprv2crptn14"),
-	preload("uid://dxmfm0d5pmloh"),
+var monster_types: Array[MonsterType] = [
+	MonsterType.new(preload("uid://bapq6tesgu84k"), 1),
+	MonsterType.new(preload("uid://tprv2crptn14"), 2),
+	MonsterType.new(preload("uid://dxmfm0d5pmloh"), 4),
 ]
 
+var current_wave := 0
+
 func _ready() -> void:
+	current_wave = 0
 	GlobalState.seconds_until_next_wave = WAVE_LENGTH_SECONDS
 
 func _process(_delta: float) -> void:
@@ -62,15 +76,34 @@ func _on_wave_countdown_timer_timeout() -> void:
 		GlobalState.seconds_until_next_wave -= 1
 
 func spawn_monster_wave() -> void:
+	current_wave += 1
+
+	var unlocked_monster_scenes: Array[PackedScene] = []
+	for monster_type: MonsterType in monster_types:
+		if current_wave >= monster_type.first_wave:
+			unlocked_monster_scenes.append(monster_type.scene)
+
+	var monster_count := BASE_MONSTER_COUNT + current_wave - 1
+	var wave_monster_scenes: Array[PackedScene] = []
+
+	# Guarantee that every unlocked monster type appears in the wave.
+	for monster_scene in unlocked_monster_scenes:
+		wave_monster_scenes.append(monster_scene)
+
+	while wave_monster_scenes.size() < monster_count:
+		wave_monster_scenes.append(unlocked_monster_scenes.pick_random() as PackedScene)
+	wave_monster_scenes.shuffle()
+
 	# Spread out the monsters horizontally
 	var spawn_x_offsets: Array[float] = []
-	const spawn_offset_count := 8
-	for i in range(spawn_offset_count):
-		spawn_x_offsets.append(lerpf(-80.0, 80.0, float(i) / (spawn_offset_count - 1.0)))
+	for i in range(monster_count):
+		var interpolation := 0.0 if monster_count == 1 else float(i) / (monster_count - 1.0)
+		spawn_x_offsets.append(lerpf(SPAWN_X_MIN, SPAWN_X_MAX, interpolation))
 	spawn_x_offsets.shuffle()
 
-	for i in range(3):
-		var monster := monster_scenes.pick_random().instantiate() as Node2D
+	for i in range(monster_count):
+		var monster := wave_monster_scenes[i].instantiate() as Monster
+		monster.initialize_for_wave(current_wave)
 		monster.global_position.y = monster_spawn_position.global_position.y
 		monster.global_position.x = monster_spawn_position.global_position.x + spawn_x_offsets[i] + randf_range(-2.0, 2.0)
 		monsters.add_child(monster)

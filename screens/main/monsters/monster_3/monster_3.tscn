@@ -7,6 +7,7 @@ size = Vector2(8, 8)
 
 [node name="Monster3" type="Node2D" unique_id=1222954009 groups=["monsters"]]
 script = ExtResource("1_u5njp")
+base_hp = 4
 
 [node name="Level1" type="Node2D" parent="." unique_id=2068851307]
 unique_name_in_owner = true
