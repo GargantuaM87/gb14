@@ -1,8 +1,23 @@
 class_name Level
 extends Node2D
 
-@onready var tile_map_layer: TileMapLayer = %TileMapLayer
+@onready var dirt_layer: TileMapLayer = %DirtLayer
+@onready var left_dirt_layer: TileMapLayer = %LeftDirtLayer
+@onready var right_dirt_layer: TileMapLayer = %RightDirtLayer
+@onready var top_dirt_layer: TileMapLayer = %TopDirtLayer
+@onready var bottom_dirt_layer: TileMapLayer = %BottomDirtLayer
+@onready var gold_layer: TileMapLayer = %GoldLayer
+
 const GOLD_SCENE: PackedScene = preload("uid://hscc2e85bn4m")
+
+const TILE_SOURCE_ID := 1
+const DIRT_TILE_ROW := 0
+const GOLD_TILE_ROW := 1
+const INDESTRUCTIBLE_TILE := Vector2i(1, 2)
+const LEFT_DIRT_TILE := Vector2i(0, 3)
+const BOTTOM_DIRT_TILE := Vector2i(1, 3)
+const RIGHT_DIRT_TILE := Vector2i(2, 3)
+const TOP_DIRT_TILE := Vector2i(3, 3)
 
 const LEVEL_WIDTH := 10 * 3
 const LEVEL_HEIGHT := 8 * 10
@@ -75,7 +90,12 @@ func _generate_level() -> void:
 	if depth_start <= LEVEL_Y_MAX:
 		_generate_depth(depth_start, LEVEL_Y_MAX, depths.back())
 
-	tile_map_layer.clear()
+	dirt_layer.clear()
+	left_dirt_layer.clear()
+	right_dirt_layer.clear()
+	top_dirt_layer.clear()
+	bottom_dirt_layer.clear()
+	gold_layer.clear()
 
 	for x in range(LEVEL_X_MIN, LEVEL_X_MAX + 1):
 		_reveal_cell(Vector2i(x, 0))
@@ -140,20 +160,58 @@ func _reveal_cell(start_coordinate: Vector2i) -> void:
 
 func _update_tile_map_cell(coordinate: Vector2i) -> void:
 	var cell: Cell = level_data.get(coordinate)
-	if cell == null || cell.type == CellType.EMPTY:
-		tile_map_layer.erase_cell(coordinate)
+	if cell == null:
+		_clear_tile_map_cell(coordinate)
 		return
+
+	if cell.type == CellType.EMPTY:
+		dirt_layer.erase_cell(coordinate)
+		gold_layer.erase_cell(coordinate)
+		_update_empty_cell_edges(coordinate)
+		return
+
+	_clear_empty_cell_edges(coordinate)
+	gold_layer.erase_cell(coordinate)
 
 	if cell.type == CellType.UNBREAKABLE:
-		tile_map_layer.set_cell(coordinate, 0, Vector2i(0, 1))
+		dirt_layer.set_cell(coordinate, TILE_SOURCE_ID, INDESTRUCTIBLE_TILE)
 		return
 
-	var health_ratio := 0.0
+	var destruction_ratio := 0.0
 	if cell.max_health > 0:
-		health_ratio = clampf(float(cell.health) / cell.max_health, 0.0, 1.0)
-	var dirt_frame := roundi((1.0 - health_ratio) * 5.0)
-	var dirt_row := 2 if cell.gold_value > 0 else 0
-	tile_map_layer.set_cell(coordinate, 0, Vector2i(dirt_frame, dirt_row))
+		destruction_ratio = clampf(1.0 - float(cell.health) / cell.max_health, 0.0, 1.0)
+	var dirt_frame := mini(floori(destruction_ratio * 4.0), 3)
+	dirt_layer.set_cell(coordinate, TILE_SOURCE_ID, Vector2i(dirt_frame, DIRT_TILE_ROW))
+
+	if cell.gold_value > 0:
+		gold_layer.set_cell(coordinate, TILE_SOURCE_ID, Vector2i(dirt_frame, GOLD_TILE_ROW))
+
+func _clear_tile_map_cell(coordinate: Vector2i) -> void:
+	dirt_layer.erase_cell(coordinate)
+	gold_layer.erase_cell(coordinate)
+	_clear_empty_cell_edges(coordinate)
+
+func _clear_empty_cell_edges(coordinate: Vector2i) -> void:
+	left_dirt_layer.erase_cell(coordinate)
+	bottom_dirt_layer.erase_cell(coordinate)
+	right_dirt_layer.erase_cell(coordinate)
+	top_dirt_layer.erase_cell(coordinate)
+
+func _update_empty_cell_edges(coordinate: Vector2i) -> void:
+	_clear_empty_cell_edges(coordinate)
+
+	if _is_dirt_cell(coordinate + Vector2i.LEFT):
+		left_dirt_layer.set_cell(coordinate, TILE_SOURCE_ID, LEFT_DIRT_TILE)
+	if _is_dirt_cell(coordinate + Vector2i.DOWN):
+		bottom_dirt_layer.set_cell(coordinate, TILE_SOURCE_ID, BOTTOM_DIRT_TILE)
+	if _is_dirt_cell(coordinate + Vector2i.RIGHT):
+		right_dirt_layer.set_cell(coordinate, TILE_SOURCE_ID, RIGHT_DIRT_TILE)
+	if _is_dirt_cell(coordinate + Vector2i.UP):
+		top_dirt_layer.set_cell(coordinate, TILE_SOURCE_ID, TOP_DIRT_TILE)
+
+func _is_dirt_cell(coordinate: Vector2i) -> bool:
+	var cell: Cell = level_data.get(coordinate)
+	return cell != null && cell.type == CellType.DIRT
 
 func do_damage(coordinate: Vector2i, damage: int) -> bool:
 	if damage <= 0:
@@ -171,6 +229,8 @@ func do_damage(coordinate: Vector2i, damage: int) -> bool:
 		cell.type = CellType.EMPTY
 		cell.is_revealed = false
 		_reveal_cell(coordinate)
+		for direction in [Vector2i.UP, Vector2i.LEFT, Vector2i.RIGHT, Vector2i.DOWN]:
+			_update_tile_map_cell(coordinate + direction)
 		if gold_value > 0:
 			_spawn_gold(coordinate, gold_value)
 	else:

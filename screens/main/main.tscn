@@ -14,10 +14,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggonf"]
 shader = ExtResource("1_j5age")
-shader_parameter/darkest = Color(0.137, 0.224, 0.2, 1)
-shader_parameter/dark = Color(0.639, 0.341, 0.306, 1)
-shader_parameter/light = Color(0.902, 0.725, 0.353, 1)
-shader_parameter/lightest = Color(0.835, 0.847, 0.82, 1)
+shader_parameter/darkest = Color(0.13333334, 0.11764706, 0.019607844, 1)
+shader_parameter/dark = Color(0.20784314, 0.2784314, 0.3019608, 1)
+shader_parameter/light = Color(0.7882353, 0.6784314, 0.1882353, 1)
+shader_parameter/lightest = Color(0.9098039, 0.9137255, 0.7411765, 1)
 shader_parameter/threshold_1 = 0.25
 shader_parameter/threshold_2 = 0.5
 shader_parameter/threshold_3 = 0.75
