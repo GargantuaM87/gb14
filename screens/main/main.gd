@@ -61,10 +61,17 @@ func _on_wave_countdown_timer_timeout() -> void:
 		GlobalState.seconds_until_next_wave -= 1
 
 func spawn_monster_wave() -> void:
+	# Spread out the monsters horizontally
+	var spawn_x_offsets: Array[float] = []
+	const spawn_offset_count := 8
+	for i in range(spawn_offset_count):
+		spawn_x_offsets.append(lerpf(-80.0, 80.0, float(i) / (spawn_offset_count - 1.0)))
+	spawn_x_offsets.shuffle()
+
 	for i in range(3):
 		var monster := monster_scenes.pick_random().instantiate() as Node2D
 		monster.global_position.y = monster_spawn_position.global_position.y
-		monster.global_position.x = monster_spawn_position.global_position.x + randf_range(-50, 50)
+		monster.global_position.x = monster_spawn_position.global_position.x + spawn_x_offsets[i] + randf_range(-2.0, 2.0)
 		monsters.add_child(monster)
 
 func is_above_ground() -> bool:

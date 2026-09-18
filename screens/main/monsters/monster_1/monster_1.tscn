@@ -3,37 +3,71 @@
 [ext_resource type="Script" uid="uid://f6iasf0ksylm" path="res://screens/main/monsters/monster_1/monster_1.gd" id="1_8ku3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbx3x"]
-size = Vector2(14, 6)
+size = Vector2(10, 5)
 
 [node name="Monster1" type="Node2D" unique_id=1222954009 groups=["monsters"]]
 script = ExtResource("1_8ku3b")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1642742124]
-offset_left = -7.0
-offset_top = -1.0
-offset_right = 7.0
-offset_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = -2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1476309590]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1010734401]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -1.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=2022665464]
 offset_left = -1.0
-offset_top = -4.0
+offset_top = -1.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=1597573699]
+offset_top = -1.0
 offset_right = 1.0
-offset_bottom = 4.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="." unique_id=804330403]
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = -1.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="." unique_id=1795118740]
+offset_left = 2.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = -2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=1801431228]
 offset_left = 3.0
 offset_top = -3.0
 offset_right = 4.0
-offset_bottom = 3.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="." unique_id=674640497]
+offset_left = 4.0
+offset_right = 5.0
+offset_bottom = 2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
 [node name="ColorRect5" type="ColorRect" parent="." unique_id=1666200434]
 offset_left = -4.0
 offset_top = -3.0
 offset_right = -3.0
-offset_bottom = 3.0
+color = Color(0.7806013, 0.26119012, 0, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="." unique_id=1601493884]
+offset_left = -5.0
+offset_right = -4.0
+offset_bottom = 2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1896813591]
@@ -41,6 +75,7 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2117448837]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_vbx3x")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
