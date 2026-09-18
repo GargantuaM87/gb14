@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://by4ms12lc0wr5"]
+
+[ext_resource type="Script" uid="uid://d4boou6wiccw4" path="res://screens/main/weapons/weapon_2/laser.gd" id="1_laser"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laser"]
+size = Vector2(300, 2)
+
+[node name="Laser" type="Node2D" unique_id=2070579736]
+script = ExtResource("1_laser")
+
+[node name="Line" type="Line2D" parent="." unique_id=1030827392]
+points = PackedVector2Array(0, 0, 300, 0)
+width = 2.0
+
+[node name="HitArea" type="Area2D" parent="." unique_id=1698955758]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1689000460]
+position = Vector2(150, 0)
+shape = SubResource("RectangleShape2D_laser")

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cfsrsyc2pvi34" path="res://screens/main/weapons/weapon_1/weapon_1.tscn" id="8_126cu"]
 [ext_resource type="PackedScene" uid="uid://cgwt5ibxdbyq4" path="res://screens/shop/shop.tscn" id="9_j6p4r"]
 [ext_resource type="PackedScene" uid="uid://cc56p4dmpnqpv" path="res://screens/main/level/level.tscn" id="10_yg3ed"]
+[ext_resource type="PackedScene" uid="uid://dcrgtteg0il0g" path="res://screens/main/weapons/weapon_2/weapon_2.tscn" id="11_weapon2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggonf"]
 shader = ExtResource("1_j5age")
@@ -94,8 +95,8 @@ position = Vector2(76, -91)
 position = Vector2(122, 45)
 projectile_spawn_node_path = NodePath("..")
 
-[node name="Weapon2" parent="Weapons" unique_id=274074307 node_paths=PackedStringArray("projectile_spawn_node_path") instance=ExtResource("8_126cu")]
+[node name="Weapon2" parent="Weapons" unique_id=274074307 node_paths=PackedStringArray("laser_parent") instance=ExtResource("11_weapon2")]
 position = Vector2(22, 45)
-projectile_spawn_node_path = NodePath("..")
+laser_parent = NodePath("..")
 
 [connection signal="timeout" from="WaveCountdownTimer" to="." method="_on_wave_countdown_timer_timeout"]

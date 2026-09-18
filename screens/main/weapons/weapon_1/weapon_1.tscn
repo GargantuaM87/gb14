@@ -6,16 +6,16 @@
 script = ExtResource("1_xrubn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=536989947]
-offset_left = -3.0
+offset_left = -4.0
 offset_top = -1.0
-offset_right = 3.0
+offset_right = 4.0
 offset_bottom = 2.0
 color = Color(0.6988686, 0.2747209, 0.009831187, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=555541350]
-offset_left = -1.0
-offset_top = -4.0
-offset_right = 1.0
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 2.0
 color = Color(0.6988686, 0.2747209, 0.009831187, 1)
 
 [node name="ProjectileSpawnPoint" type="Marker2D" parent="." unique_id=469191458]
