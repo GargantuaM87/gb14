@@ -53,9 +53,13 @@ mouse_filter = 2
 
 [node name="Hud" parent="ScreenOverlay" unique_id=299411011 instance=ExtResource("3_4eq7x")]
 
-[node name="Shop" parent="ScreenOverlay" unique_id=147810324 instance=ExtResource("9_j6p4r")]
+[node name="Shop" parent="ScreenOverlay" unique_id=147810324 node_paths=PackedStringArray("upgrades") instance=ExtResource("9_j6p4r")]
 unique_name_in_owner = true
 visible = false
+upgrades = {
+"RepairShop": null,
+"WeaponShp": null
+}
 
 [node name="ShopNotification" parent="ScreenOverlay" unique_id=536382147 instance=ExtResource("5_vhluw")]
 unique_name_in_owner = true
