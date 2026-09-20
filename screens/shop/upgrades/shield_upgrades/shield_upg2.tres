@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://c2ghtjt6dp1cr"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_c7ijq"]
+[ext_resource type="Resource" uid="uid://bp2vq886url0x" path="res://screens/shop/upgrades/shield_upgrades/shield_upg5.tres" id="2_4uu31"]
+
+[resource]
+script = ExtResource("1_c7ijq")
+upgradeName = "Reflection"
+upgradeDesc = "5% Chance to Reflect Projectiles"
+unlockUpgs = Array[ExtResource("1_c7ijq")]([ExtResource("2_4uu31")])
+upgradeCost = 5
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

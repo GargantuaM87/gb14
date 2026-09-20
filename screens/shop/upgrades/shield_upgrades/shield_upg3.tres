@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://b1fsq6n7b4ibd"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_mt8g4"]
+[ext_resource type="Resource" uid="uid://dqk24ei2dbr7c" path="res://screens/shop/upgrades/shield_upgrades/shield_upg6.tres" id="2_yrri7"]
+
+[resource]
+script = ExtResource("1_mt8g4")
+upgradeName = "Shockwave"
+upgradeDesc = "Send Out Periodic Shockwaves"
+unlockUpgs = Array[ExtResource("1_mt8g4")]([ExtResource("2_yrri7")])
+upgradeCost = 5
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

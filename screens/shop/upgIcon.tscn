@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://0wlsm86fhpk2"]
+
+[ext_resource type="StyleBox" uid="uid://pob1fwpod5fo" path="res://screens/shop/upgrades/upg_icon_style.tres" id="1_r602x"]
+[ext_resource type="Script" uid="uid://rcpvp1yglhak" path="res://screens/shop/upg_icon.gd" id="2_5vdv7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exf34"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_woqh1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o822i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iypgj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tydr6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jp7eb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phmfn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yssxh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7vra"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_miywd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eohc1"]
+
+[node name="UpgIcon" type="PanelContainer" unique_id=1991842629]
+custom_minimum_size = Vector2(20, 20)
+theme_override_styles/panel = ExtResource("1_r602x")
+script = ExtResource("2_5vdv7")
+unlockColorBorder = Color(1, 1, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1522579488]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=797328601]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_exf34")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_woqh1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o822i")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_iypgj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tydr6")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_jp7eb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_phmfn")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_yssxh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_c7vra")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_miywd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eohc1")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

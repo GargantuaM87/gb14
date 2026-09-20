@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://dynnf3xhfqtry"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_q8pjt"]
+
+[resource]
+script = ExtResource("1_q8pjt")
+upgradeName = "Upgrade 6"
+upgradeDesc = "Power"
+upgradeCost = 25
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

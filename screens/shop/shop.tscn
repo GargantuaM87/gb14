@@ -3,6 +3,14 @@
 [ext_resource type="FontFile" uid="uid://lngqtr531ilb" path="res://fonts/Silkscreen-Regular.ttf" id="1_pemkv"]
 [ext_resource type="Script" uid="uid://bcavynmrneasg" path="res://screens/shop/shop.gd" id="1_tmpma"]
 [ext_resource type="Texture2D" uid="uid://djixphausg4r0" path="res://textures/arrow.png" id="3_k4o4i"]
+[ext_resource type="Script" uid="uid://bk0voar5tvnid" path="res://screens/shop/upgrade_tree.gd" id="4_o7cyr"]
+[ext_resource type="PackedScene" uid="uid://0wlsm86fhpk2" path="res://screens/shop/upgIcon.tscn" id="4_wg7du"]
+[ext_resource type="Resource" uid="uid://dk3b8fib1onl5" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg1.tres" id="6_ssed7"]
+[ext_resource type="Resource" uid="uid://dx34p4fgq6xdi" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg2.tres" id="7_q1j07"]
+[ext_resource type="Resource" uid="uid://bflodcdpp5uox" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg3.tres" id="8_ty68r"]
+[ext_resource type="Resource" uid="uid://cpeyx3ckdf5mk" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg4.tres" id="9_luiik"]
+[ext_resource type="Resource" uid="uid://bxi8fcqisjngt" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg5.tres" id="10_byh3i"]
+[ext_resource type="Resource" uid="uid://dynnf3xhfqtry" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg6.tres" id="11_hrckh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pemkv"]
 bg_color = Color(0.38625076, 0.38625088, 0.38625073, 1)
@@ -19,10 +27,11 @@ font_size = 8
 script = ExtResource("1_tmpma")
 shops = [NodePath("SelectionPanel/RepairShop"), NodePath("SelectionPanel/WeaponShop"), NodePath("SelectionPanel/ShieldShop")]
 upgrades = {
-"repairshop": NodePath("URepair")
+"weaponshop": NodePath("WeaponTree")
 }
 
 [node name="SelectionPanel" type="Panel" parent="." unique_id=1484621643]
+visible = false
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0
@@ -107,9 +116,219 @@ texture = ExtResource("3_k4o4i")
 expand_mode = 1
 flip_h = true
 
-[node name="URepair" type="Panel" parent="." unique_id=143122701]
+[node name="WeaponTree" type="Panel" parent="." unique_id=143122701]
+offset_top = 15.0
+offset_right = 160.0
+offset_bottom = 129.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pemkv")
+script = ExtResource("4_o7cyr")
+
+[node name="MarginContainer" type="MarginContainer" parent="WeaponTree" unique_id=1927450288]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WeaponTree/MarginContainer" unique_id=218440678]
+layout_mode = 2
+
+[node name="Layer1" type="VBoxContainer" parent="WeaponTree/MarginContainer/HBoxContainer" unique_id=766886426]
+layout_mode = 2
+
+[node name="UpgIcn" parent="WeaponTree/MarginContainer/HBoxContainer/Layer1" unique_id=1991842629 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("6_ssed7")
+
+[node name="UpgIcn2" parent="WeaponTree/MarginContainer/HBoxContainer/Layer1" unique_id=1395170560 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("7_q1j07")
+
+[node name="UpgIcn3" parent="WeaponTree/MarginContainer/HBoxContainer/Layer1" unique_id=1503451791 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("8_ty68r")
+
+[node name="Layer2" type="VBoxContainer" parent="WeaponTree/MarginContainer/HBoxContainer" unique_id=974273557]
+layout_mode = 2
+
+[node name="UpgIcn4" parent="WeaponTree/MarginContainer/HBoxContainer/Layer2" unique_id=1521951421 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("9_luiik")
+
+[node name="UpgIcn5" parent="WeaponTree/MarginContainer/HBoxContainer/Layer2" unique_id=1265413184 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("10_byh3i")
+
+[node name="UpgIcn6" parent="WeaponTree/MarginContainer/HBoxContainer/Layer2" unique_id=1313931485 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("11_hrckh")
+
+[node name="UpgradeInfo" type="Panel" parent="WeaponTree" unique_id=438302368]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 8.0
+offset_right = 153.0
+offset_bottom = 106.0
+
+[node name="Name" type="Label" parent="WeaponTree/UpgradeInfo" unique_id=981612148]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_right = 12.5
+offset_bottom = 11.0
+grow_horizontal = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_tmpma")
+
+[node name="Desc" type="Label" parent="WeaponTree/UpgradeInfo" unique_id=439546091]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Upgrade info here"
+label_settings = SubResource("LabelSettings_tmpma")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cost" type="Label" parent="WeaponTree/UpgradeInfo" unique_id=1479646577]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 33.0
+offset_right = -2.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost:"
+label_settings = SubResource("LabelSettings_tmpma")
+autowrap_mode = 3
+
+[node name="ShieldTree" type="Panel" parent="." unique_id=634926809]
 visible = false
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pemkv")
+script = ExtResource("4_o7cyr")
+
+[node name="MarginContainer" type="MarginContainer" parent="ShieldTree" unique_id=1913203700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShieldTree/MarginContainer" unique_id=1544883455]
+layout_mode = 2
+
+[node name="Layer1" type="VBoxContainer" parent="ShieldTree/MarginContainer/HBoxContainer" unique_id=1186620090]
+layout_mode = 2
+
+[node name="UpgIcn" parent="ShieldTree/MarginContainer/HBoxContainer/Layer1" unique_id=106308612 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="UpgIcn2" parent="ShieldTree/MarginContainer/HBoxContainer/Layer1" unique_id=1733542736 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="UpgIcn3" parent="ShieldTree/MarginContainer/HBoxContainer/Layer1" unique_id=994213728 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Layer2" type="VBoxContainer" parent="ShieldTree/MarginContainer/HBoxContainer" unique_id=607735819]
+layout_mode = 2
+
+[node name="UpgIcn4" parent="ShieldTree/MarginContainer/HBoxContainer/Layer2" unique_id=222147128 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="UpgIcn5" parent="ShieldTree/MarginContainer/HBoxContainer/Layer2" unique_id=1419428894 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="UpgIcn6" parent="ShieldTree/MarginContainer/HBoxContainer/Layer2" unique_id=333009926 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="UpgradeInfo" type="Panel" parent="ShieldTree" unique_id=1163198546]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 8.0
+offset_right = 153.0
+offset_bottom = 106.0
+
+[node name="Name" type="Label" parent="ShieldTree/UpgradeInfo" unique_id=1799392610]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_right = 12.5
+offset_bottom = 11.0
+grow_horizontal = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_tmpma")
+
+[node name="Desc" type="Label" parent="ShieldTree/UpgradeInfo" unique_id=723249284]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Upgrade info here"
+label_settings = SubResource("LabelSettings_tmpma")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cost" type="Label" parent="ShieldTree/UpgradeInfo" unique_id=1161526375]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 33.0
+offset_right = -2.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost:"
+label_settings = SubResource("LabelSettings_tmpma")
+autowrap_mode = 3

@@ -58,7 +58,8 @@ unique_name_in_owner = true
 visible = false
 upgrades = {
 "RepairShop": null,
-"WeaponShp": null
+"WeaponShp": null,
+"repairshop": null
 }
 
 [node name="ShopNotification" parent="ScreenOverlay" unique_id=536382147 instance=ExtResource("5_vhluw")]

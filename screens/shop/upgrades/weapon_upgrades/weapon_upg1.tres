@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://dk3b8fib1onl5"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_neqva"]
+[ext_resource type="Resource" uid="uid://cpeyx3ckdf5mk" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg4.tres" id="2_mc7fu"]
+
+[resource]
+script = ExtResource("1_neqva")
+upgradeName = "Upgrade 1"
+upgradeDesc = "Add Attack"
+unlockUpgs = Array[ExtResource("1_neqva")]([ExtResource("2_mc7fu")])
+upgradeCost = 5
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"
