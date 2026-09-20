@@ -11,6 +11,12 @@
 [ext_resource type="Resource" uid="uid://cpeyx3ckdf5mk" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg4.tres" id="9_luiik"]
 [ext_resource type="Resource" uid="uid://bxi8fcqisjngt" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg5.tres" id="10_byh3i"]
 [ext_resource type="Resource" uid="uid://dynnf3xhfqtry" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg6.tres" id="11_hrckh"]
+[ext_resource type="Resource" uid="uid://clu1djr2tymyr" path="res://screens/shop/upgrades/shield_upgrades/shield_upg1.tres" id="12_4n1uo"]
+[ext_resource type="Resource" uid="uid://c2ghtjt6dp1cr" path="res://screens/shop/upgrades/shield_upgrades/shield_upg2.tres" id="13_yhg0d"]
+[ext_resource type="Resource" uid="uid://b1fsq6n7b4ibd" path="res://screens/shop/upgrades/shield_upgrades/shield_upg3.tres" id="14_6here"]
+[ext_resource type="Resource" uid="uid://dt7jf5sh7fq7b" path="res://screens/shop/upgrades/shield_upgrades/shield_upg4.tres" id="15_og3gr"]
+[ext_resource type="Resource" uid="uid://bp2vq886url0x" path="res://screens/shop/upgrades/shield_upgrades/shield_upg5.tres" id="16_x3u41"]
+[ext_resource type="Resource" uid="uid://dqk24ei2dbr7c" path="res://screens/shop/upgrades/shield_upgrades/shield_upg6.tres" id="17_xw883"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pemkv"]
 bg_color = Color(0.38625076, 0.38625088, 0.38625073, 1)
@@ -117,6 +123,7 @@ expand_mode = 1
 flip_h = true
 
 [node name="WeaponTree" type="Panel" parent="." unique_id=143122701]
+visible = false
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0
@@ -228,7 +235,6 @@ label_settings = SubResource("LabelSettings_tmpma")
 autowrap_mode = 3
 
 [node name="ShieldTree" type="Panel" parent="." unique_id=634926809]
-visible = false
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0
@@ -256,14 +262,17 @@ layout_mode = 2
 [node name="UpgIcn" parent="ShieldTree/MarginContainer/HBoxContainer/Layer1" unique_id=106308612 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+upgResource = ExtResource("12_4n1uo")
 
 [node name="UpgIcn2" parent="ShieldTree/MarginContainer/HBoxContainer/Layer1" unique_id=1733542736 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+upgResource = ExtResource("13_yhg0d")
 
 [node name="UpgIcn3" parent="ShieldTree/MarginContainer/HBoxContainer/Layer1" unique_id=994213728 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+upgResource = ExtResource("14_6here")
 
 [node name="Layer2" type="VBoxContainer" parent="ShieldTree/MarginContainer/HBoxContainer" unique_id=607735819]
 layout_mode = 2
@@ -271,14 +280,17 @@ layout_mode = 2
 [node name="UpgIcn4" parent="ShieldTree/MarginContainer/HBoxContainer/Layer2" unique_id=222147128 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+upgResource = ExtResource("15_og3gr")
 
 [node name="UpgIcn5" parent="ShieldTree/MarginContainer/HBoxContainer/Layer2" unique_id=1419428894 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+upgResource = ExtResource("16_x3u41")
 
 [node name="UpgIcn6" parent="ShieldTree/MarginContainer/HBoxContainer/Layer2" unique_id=333009926 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+upgResource = ExtResource("17_xw883")
 
 [node name="UpgradeInfo" type="Panel" parent="ShieldTree" unique_id=1163198546]
 layout_mode = 0

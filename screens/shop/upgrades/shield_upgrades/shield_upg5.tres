@@ -6,5 +6,5 @@
 script = ExtResource("1_rea0i")
 upgradeName = "Reflection II"
 upgradeDesc = "20% To Reflect Projectiles"
-upgradeCost = 5
+upgradeCost = 45
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

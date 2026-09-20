@@ -5,39 +5,51 @@ extends Panel
 @onready var uDesc = $UpgradeInfo/Desc
 @onready var uCost = $UpgradeInfo/Cost
 
+# Would rather have these be variable then constant, but saving time for now
+const ROWS = 3
+const COLS = 2
+
 var upgrades : Array[PanelContainer]
-var upgradePointer = 0
+var currRow = 0
+var currCol = 0
+var pointerIdx = 0
+
+
 
 func _ready() -> void:
-	for node in get_tree().get_nodes_in_group("upgrades"):
-		upgrades.append(node)
-	
-	set_upgrade_pointer(0)
+	for node in find_children("*", "", true):
+		if node.is_in_group("upgrades"):
+			upgrades.append(node)
+	set_upgrade_pointer(0, 0)
 
 func _process(delta: float) -> void:
 	queue_redraw()
 	
 	# For navigating the upgrade nodes
 	if Input.is_action_just_pressed("down"):
-		set_upgrade_pointer(upgradePointer + 1)
+		set_upgrade_pointer(currRow + 1, currCol)
 	elif Input.is_action_just_pressed("up"):
-		set_upgrade_pointer(upgradePointer - 1)
+		set_upgrade_pointer(currRow - 1 + ROWS, currCol)
 	# Implement those later
 	elif Input.is_action_just_pressed("right"):
-		pass
+		set_upgrade_pointer(currRow, currCol + 1)
 	elif Input.is_action_just_pressed("left"):
-		pass
+		set_upgrade_pointer(currRow, currCol - 1 + COLS)
 	
 	if visible and Input.is_action_just_pressed("a_button"):
-		upgrades[upgradePointer].unlock_upgrade()
-		
-func set_upgrade_pointer(value : int) -> void:
+		upgrades[pointerIdx].unlock_upgrade()
+
+# Change the upgrade pointer
+func set_upgrade_pointer(row : int, col : int) -> void:
 	handle_upgrade_pointer(false)
-	upgradePointer = wrapi(value, 0, upgrades.size())
+	currRow = row % ROWS
+	currCol = col % COLS
+	pointerIdx = (currRow * COLS) + currCol
 	handle_upgrade_pointer(true)
-	
+
+# Update the nodes that are accessed by the upgrade pointer
 func handle_upgrade_pointer(enabled : bool) -> void:
-	var node = upgrades[upgradePointer]
+	var node = upgrades[pointerIdx]
 	
 	if !node:
 		return
@@ -55,7 +67,8 @@ func handle_upgrade_pointer(enabled : bool) -> void:
 	styleBox.border_color = color
 		
 	node.add_theme_stylebox_override("panel", styleBox)
-	
+
+# Draw lines between upgrade nodes
 func _draw() -> void:
 	for node in get_tree().get_nodes_in_group("upgrades"):
 		for resource in node.upgResource.unlockUpgs:
@@ -71,7 +84,8 @@ func _draw() -> void:
 			targetNode.set_parent(node.upgResource)
 			
 			draw_line(sourcePos, targetPos, color, 2.0)
-
+			
+# Return node with the given resource
 func get_node_with_resource(resource):
 	for node in get_tree().get_nodes_in_group("upgrades"):
 		if node.upgResource == resource:
