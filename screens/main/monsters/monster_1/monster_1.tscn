@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://bapq6tesgu84k"]
 
 [ext_resource type="Script" uid="uid://f6iasf0ksylm" path="res://screens/main/monsters/monster_1/monster_1.gd" id="1_8ku3b"]
+[ext_resource type="Shader" uid="uid://3vtwujduk7aq" path="res://screens/main/monsters/monster_3/flash_white.gdshader" id="2_syl38"]
 [ext_resource type="Texture2D" uid="uid://bl5wgmtsaprjw" path="res://screens/main/monsters/new-enemies.png" id="2_5i6gf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
+resource_local_to_scene = true
+shader = ExtResource("2_syl38")
+shader_parameter/flash_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbx3x"]
 size = Vector2(15, 16)
@@ -21,7 +27,11 @@ collision_mask = 4
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_vbx3x")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1856048921]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1523594927]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_flash")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=1856048921]
 position = Vector2(-7, -8)
 texture = SubResource("AtlasTexture_8ku3b")
 centered = false

@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://tprv2crptn14"]
 
 [ext_resource type="Script" uid="uid://bctip5hk046yk" path="res://screens/main/monsters/monster_2/monster_2.gd" id="1_sy168"]
+[ext_resource type="Shader" uid="uid://3vtwujduk7aq" path="res://screens/main/monsters/monster_3/flash_white.gdshader" id="2_syl38"]
 [ext_resource type="Texture2D" uid="uid://bl5wgmtsaprjw" path="res://screens/main/monsters/new-enemies.png" id="2_yeh3n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
+resource_local_to_scene = true
+shader = ExtResource("2_syl38")
+shader_parameter/flash_amount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbx3x"]
 atlas = ExtResource("2_yeh3n")
@@ -13,7 +19,11 @@ size = Vector2(30, 18)
 [node name="Monster2" type="Node2D" unique_id=1222954009 groups=["monsters"]]
 script = ExtResource("1_sy168")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=496415042]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1139274753]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_flash")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=496415042]
 position = Vector2(-15, -10)
 texture = SubResource("AtlasTexture_vbx3x")
 centered = false

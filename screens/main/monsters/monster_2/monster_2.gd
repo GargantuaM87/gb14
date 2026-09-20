@@ -18,7 +18,6 @@ const MAX_DOWNWARD_MOVES := 3
 func _ready() -> void:
 	_move()
 
-
 func _move() -> void:
 	var spawn_x := global_position.x
 
