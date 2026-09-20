@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://cs7sdn3opc56o"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_gif4a"]
+[ext_resource type="Texture2D" uid="uid://6yc0cfpjaxc" path="res://textures/spiral.png" id="2_kbpvx"]
+
+[resource]
+script = ExtResource("1_gif4a")
+upgradeName = "Spiral"
+upgradeDesc = "Significantly Increase Drill Damage"
+upgIcon = ExtResource("2_kbpvx")
+upgradeCost = 30
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

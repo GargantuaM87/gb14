@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://beccbvcj837nb"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_n5v5d"]
+[ext_resource type="Texture2D" uid="uid://buc0lp0lcbtjd" path="res://textures/lineweaverIcon.png" id="2_6swyh"]
+
+[resource]
+script = ExtResource("1_n5v5d")
+upgradeName = "Lineweaver"
+upgradeDesc = "You can drill a straight line with ease"
+upgIcon = ExtResource("2_6swyh")
+upgradeCost = 120
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

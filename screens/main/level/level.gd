@@ -30,9 +30,9 @@ const LEVEL_Y_MIN := 0
 const LEVEL_Y_MAX := LEVEL_HEIGHT - 1
 
 enum CellType {
-    EMPTY,
-    DIRT,
-    UNBREAKABLE,
+	EMPTY,
+	DIRT,
+	UNBREAKABLE,
 }
 
 class Cell:

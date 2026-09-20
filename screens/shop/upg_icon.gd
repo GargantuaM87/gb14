@@ -35,7 +35,7 @@ func _ready() -> void:
 	set_style()
 
 func get_center():
-	return custom_minimum_size / 2
+	return size / 2
 
 func set_style():
 	var styleBox : StyleBoxFlat = get_theme_stylebox("panel").duplicate()

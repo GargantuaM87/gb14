@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_klp0d"]
 [ext_resource type="Resource" uid="uid://dt7jf5sh7fq7b" path="res://screens/shop/upgrades/shield_upgrades/shield_upg4.tres" id="2_us3ah"]
+[ext_resource type="Texture2D" uid="uid://0tw2350dg6l5" path="res://textures/protectorIcon1.png" id="3_bibtk"]
 
 [resource]
 script = ExtResource("1_klp0d")
 upgradeName = "Protector"
 upgradeDesc = "Increase Max Shield"
+upgIcon = ExtResource("3_bibtk")
 unlockUpgs = Array[ExtResource("1_klp0d")]([ExtResource("2_us3ah")])
 upgradeCost = 5
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

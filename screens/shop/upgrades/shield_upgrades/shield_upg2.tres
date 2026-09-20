@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_c7ijq"]
 [ext_resource type="Resource" uid="uid://bp2vq886url0x" path="res://screens/shop/upgrades/shield_upgrades/shield_upg5.tres" id="2_4uu31"]
+[ext_resource type="Texture2D" uid="uid://b5s7dfqxi0e7b" path="res://textures/relectionIcon1.png" id="3_lb4kn"]
 
 [resource]
 script = ExtResource("1_c7ijq")
 upgradeName = "Reflection"
 upgradeDesc = "5% Chance to Reflect Projectiles"
+upgIcon = ExtResource("3_lb4kn")
 unlockUpgs = Array[ExtResource("1_c7ijq")]([ExtResource("2_4uu31")])
 upgradeCost = 5
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

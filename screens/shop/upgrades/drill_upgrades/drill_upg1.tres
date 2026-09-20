@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://ce102rbiyr2eq"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_idbw6"]
+[ext_resource type="Resource" uid="uid://cs7sdn3opc56o" path="res://screens/shop/upgrades/drill_upgrades/drill_upg2.tres" id="2_dgebb"]
+[ext_resource type="Resource" uid="uid://berg1j44l17jt" path="res://screens/shop/upgrades/drill_upgrades/drill_upg3.tres" id="3_eudk8"]
+[ext_resource type="Texture2D" uid="uid://dbgcqubh3clil" path="res://textures/drillIcon.png" id="4_eudk8"]
+
+[resource]
+script = ExtResource("1_idbw6")
+upgradeName = "Excavator"
+upgradeDesc = "Increase Drill Damage"
+upgIcon = ExtResource("4_eudk8")
+unlockUpgs = Array[ExtResource("1_idbw6")]([ExtResource("2_dgebb"), ExtResource("3_eudk8")])
+upgradeCost = 5
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

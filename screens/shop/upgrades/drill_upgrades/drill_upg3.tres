@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://berg1j44l17jt"]
+
+[ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_oinaw"]
+[ext_resource type="Texture2D" uid="uid://5ofqm30hw3ig" path="res://textures/drillerIcon.png" id="2_17b22"]
+
+[resource]
+script = ExtResource("1_oinaw")
+upgradeName = "The Driller"
+upgradeDesc = "Increase Drills Per Second"
+upgIcon = ExtResource("2_17b22")
+upgradeCost = 30
+metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

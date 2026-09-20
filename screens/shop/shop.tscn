@@ -17,6 +17,12 @@
 [ext_resource type="Resource" uid="uid://dt7jf5sh7fq7b" path="res://screens/shop/upgrades/shield_upgrades/shield_upg4.tres" id="15_og3gr"]
 [ext_resource type="Resource" uid="uid://bp2vq886url0x" path="res://screens/shop/upgrades/shield_upgrades/shield_upg5.tres" id="16_x3u41"]
 [ext_resource type="Resource" uid="uid://dqk24ei2dbr7c" path="res://screens/shop/upgrades/shield_upgrades/shield_upg6.tres" id="17_xw883"]
+[ext_resource type="Resource" uid="uid://ce102rbiyr2eq" path="res://screens/shop/upgrades/drill_upgrades/drill_upg1.tres" id="18_gfbi3"]
+[ext_resource type="Resource" uid="uid://cs7sdn3opc56o" path="res://screens/shop/upgrades/drill_upgrades/drill_upg2.tres" id="19_r13bp"]
+[ext_resource type="Resource" uid="uid://berg1j44l17jt" path="res://screens/shop/upgrades/drill_upgrades/drill_upg3.tres" id="20_alhln"]
+[ext_resource type="Resource" uid="uid://dpiyap4c8poky" path="res://screens/shop/upgrades/drill_upgrades/drill_upg4.tres" id="21_hdt0p"]
+[ext_resource type="Resource" uid="uid://e5m7g4vi07hv" path="res://screens/shop/upgrades/drill_upgrades/drill_upg5.tres" id="22_ftonq"]
+[ext_resource type="Resource" uid="uid://beccbvcj837nb" path="res://screens/shop/upgrades/drill_upgrades/drill_upg6.tres" id="23_80ljl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pemkv"]
 bg_color = Color(0.38625076, 0.38625088, 0.38625073, 1)
@@ -31,7 +37,7 @@ font_size = 8
 
 [node name="Shop" type="Node2D" unique_id=147810324 node_paths=PackedStringArray("shops", "upgrades")]
 script = ExtResource("1_tmpma")
-shops = [NodePath("SelectionPanel/RepairShop"), NodePath("SelectionPanel/WeaponShop"), NodePath("SelectionPanel/ShieldShop")]
+shops = [NodePath("SelectionPanel/DrillShop"), NodePath("SelectionPanel/WeaponShop"), NodePath("SelectionPanel/ShieldShop")]
 upgrades = {
 "weaponshop": NodePath("WeaponTree")
 }
@@ -43,14 +49,14 @@ offset_right = 160.0
 offset_bottom = 129.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pemkv")
 
-[node name="RepairShop" type="Panel" parent="SelectionPanel" unique_id=1232248180]
+[node name="DrillShop" type="Panel" parent="SelectionPanel" unique_id=1232248180]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 23.0
 offset_right = 110.0
 offset_bottom = 86.0
 
-[node name="RepairLabel" type="Label" parent="SelectionPanel/RepairShop" unique_id=664870908]
+[node name="DrillLabel" type="Label" parent="SelectionPanel/DrillShop" unique_id=664870908]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 25.0
@@ -261,6 +267,7 @@ layout_mode = 2
 
 [node name="UpgIcn" parent="ShieldTree/MarginContainer/HBoxContainer/Layer1" unique_id=106308612 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
 upgResource = ExtResource("12_4n1uo")
 
@@ -329,6 +336,118 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Cost" type="Label" parent="ShieldTree/UpgradeInfo" unique_id=1161526375]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 33.0
+offset_right = -2.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost:"
+label_settings = SubResource("LabelSettings_tmpma")
+autowrap_mode = 3
+
+[node name="DrillTree" type="Panel" parent="." unique_id=2147074321]
+visible = false
+offset_top = 15.0
+offset_right = 160.0
+offset_bottom = 129.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pemkv")
+script = ExtResource("4_o7cyr")
+
+[node name="MarginContainer" type="MarginContainer" parent="DrillTree" unique_id=1889261449]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DrillTree/MarginContainer" unique_id=34597874]
+layout_mode = 2
+
+[node name="Layer1" type="VBoxContainer" parent="DrillTree/MarginContainer/HBoxContainer" unique_id=1116000366]
+layout_mode = 2
+
+[node name="UpgIcn" parent="DrillTree/MarginContainer/HBoxContainer/Layer1" unique_id=272286858 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("18_gfbi3")
+
+[node name="UpgIcn2" parent="DrillTree/MarginContainer/HBoxContainer/Layer1" unique_id=1668073877 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("19_r13bp")
+
+[node name="UpgIcn3" parent="DrillTree/MarginContainer/HBoxContainer/Layer1" unique_id=1981761816 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("20_alhln")
+
+[node name="Layer2" type="VBoxContainer" parent="DrillTree/MarginContainer/HBoxContainer" unique_id=1422796707]
+layout_mode = 2
+
+[node name="UpgIcn4" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=996573109 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("21_hdt0p")
+
+[node name="UpgIcn5" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=398754430 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("22_ftonq")
+
+[node name="UpgIcn6" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=993507729 instance=ExtResource("4_wg7du")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+upgResource = ExtResource("23_80ljl")
+
+[node name="UpgradeInfo" type="Panel" parent="DrillTree" unique_id=1113582007]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 8.0
+offset_right = 153.0
+offset_bottom = 106.0
+
+[node name="Name" type="Label" parent="DrillTree/UpgradeInfo" unique_id=1322489106]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_right = 12.5
+offset_bottom = 11.0
+grow_horizontal = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_tmpma")
+
+[node name="Desc" type="Label" parent="DrillTree/UpgradeInfo" unique_id=1619461500]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Upgrade info here"
+label_settings = SubResource("LabelSettings_tmpma")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cost" type="Label" parent="DrillTree/UpgradeInfo" unique_id=682948587]
 custom_minimum_size = Vector2(2, 2)
 layout_mode = 1
 anchors_preset = 14
