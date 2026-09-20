@@ -19,7 +19,8 @@ var last_move_time := -10.0
 func _ready() -> void:
 	if !level:
 		Util.fatal_error("Player: Level is not set.")
-
+	
+	GlobalState.player = self
 	_update_self_position()
 	_set_player_animation(false)
 	

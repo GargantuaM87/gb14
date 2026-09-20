@@ -19,6 +19,7 @@ extends PanelContainer
 
 @onready var textureRect : TextureRect = $TextureRect
 
+
 var parent : UpgradeResource
 
 const UPGRADE_ICON_STYLEBOX = preload("res://screens/shop/upgrades/upg_icon_style.tres")
@@ -56,6 +57,9 @@ func unlock_upgrade() -> void:
 			upgResource.isUnlocked = true
 			GlobalState.money -= upgResource.upgradeCost
 			set_style()
+		
+		if !upgResource.app:
+			upgResource.app.apply_upgrade()
 
 func _on_button_pressed() -> void:
 	unlock_upgrade()

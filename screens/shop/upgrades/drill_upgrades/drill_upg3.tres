@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://berg1j44l17jt"]
 
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_oinaw"]
+[ext_resource type="Resource" uid="uid://doj4sy8qqexpi" path="res://screens/shop/upgrades/drill_upgrades/the_driller_upg.tres" id="1_wesmp"]
 [ext_resource type="Texture2D" uid="uid://5ofqm30hw3ig" path="res://textures/drillerIcon.png" id="2_17b22"]
+[ext_resource type="Resource" uid="uid://dpiyap4c8poky" path="res://screens/shop/upgrades/drill_upgrades/drill_upg4.tres" id="2_ng6s7"]
 
 [resource]
 script = ExtResource("1_oinaw")
 upgradeName = "The Driller"
 upgradeDesc = "Increase Drills Per Second"
 upgIcon = ExtResource("2_17b22")
+unlockUpgs = Array[ExtResource("1_oinaw")]([ExtResource("2_ng6s7")])
 upgradeCost = 30
+app = ExtResource("1_wesmp")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

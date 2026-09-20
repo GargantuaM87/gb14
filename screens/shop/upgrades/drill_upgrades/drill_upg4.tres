@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://dpiyap4c8poky"]
 
+[ext_resource type="Resource" uid="uid://dh0kyt3d63pp" path="res://screens/shop/upgrades/drill_upgrades/the_driller_upg2.tres" id="1_buuel"]
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_ytben"]
 [ext_resource type="Texture2D" uid="uid://dkekpocu8q5cm" path="res://textures/teleportIcon.png" id="2_bcmc8"]
 
 [resource]
 script = ExtResource("1_ytben")
-upgradeName = "Teleporter"
-upgradeDesc = "Teleport back to spawn with a cooldown"
+upgradeName = "The Driller II"
+upgradeDesc = "Significantly Increase Drills per Second"
 upgIcon = ExtResource("2_bcmc8")
 upgradeCost = 90
+app = ExtResource("1_buuel")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

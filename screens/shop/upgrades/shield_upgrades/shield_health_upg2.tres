@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://5n4b4oeply38"]
+
+[ext_resource type="Script" uid="uid://punc6m66o6up" path="res://screens/shop/upgrades/shield_upgrades/shield_health_upg.gd" id="1_pa2ib"]
+
+[resource]
+script = ExtResource("1_pa2ib")
+maxHealthUpgrade = 80
+repairHealth = 80
+metadata/_custom_type_script = "uid://ckpxgl7lpjrsl"

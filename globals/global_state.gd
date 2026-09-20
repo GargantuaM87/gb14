@@ -17,3 +17,4 @@ var shield_health := max_shield_health:
 		EventBus.trigger_shield_health_changed()
 
 var is_shop_open := false
+var player : Player = null

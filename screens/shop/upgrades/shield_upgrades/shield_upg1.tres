@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://clu1djr2tymyr"]
 
+[ext_resource type="Resource" uid="uid://d03ufau8p5yvy" path="res://screens/shop/upgrades/shield_upgrades/shield_health_upg1.tres" id="1_2xoju"]
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_klp0d"]
 [ext_resource type="Resource" uid="uid://dt7jf5sh7fq7b" path="res://screens/shop/upgrades/shield_upgrades/shield_upg4.tres" id="2_us3ah"]
 [ext_resource type="Texture2D" uid="uid://0tw2350dg6l5" path="res://textures/protectorIcon1.png" id="3_bibtk"]
@@ -11,4 +12,5 @@ upgradeDesc = "Increase Max Shield"
 upgIcon = ExtResource("3_bibtk")
 unlockUpgs = Array[ExtResource("1_klp0d")]([ExtResource("2_us3ah")])
 upgradeCost = 5
+app = ExtResource("1_2xoju")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

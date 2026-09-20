@@ -399,7 +399,7 @@ layout_mode = 2
 [node name="UpgIcn4" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=996573109 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("21_hdt0p")
+upgResource = ExtResource("23_80ljl")
 
 [node name="UpgIcn5" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=398754430 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
@@ -409,7 +409,7 @@ upgResource = ExtResource("22_ftonq")
 [node name="UpgIcn6" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=993507729 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("23_80ljl")
+upgResource = ExtResource("21_hdt0p")
 
 [node name="UpgradeInfo" type="Panel" parent="DrillTree" unique_id=1113582007]
 layout_mode = 0

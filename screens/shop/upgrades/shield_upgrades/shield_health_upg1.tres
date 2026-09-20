@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://d03ufau8p5yvy"]
+
+[ext_resource type="Script" uid="uid://punc6m66o6up" path="res://screens/shop/upgrades/shield_upgrades/shield_health_upg.gd" id="1_146ih"]
+
+[resource]
+script = ExtResource("1_146ih")
+metadata/_custom_type_script = "uid://ckpxgl7lpjrsl"

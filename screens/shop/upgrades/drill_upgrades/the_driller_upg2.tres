@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://dh0kyt3d63pp"]
+
+[ext_resource type="Script" uid="uid://c0dl0q232ag4t" path="res://screens/shop/upgrades/drill_upgrades/drill_per_second_upg.gd" id="1_uim2q"]
+
+[resource]
+script = ExtResource("1_uim2q")
+drillPerSecond = 8
+metadata/_custom_type_script = "uid://ckpxgl7lpjrsl"

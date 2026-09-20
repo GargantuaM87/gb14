@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://cs7sdn3opc56o"]
 
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_gif4a"]
-[ext_resource type="Texture2D" uid="uid://6yc0cfpjaxc" path="res://textures/spiral.png" id="2_kbpvx"]
+[ext_resource type="Resource" uid="uid://c0wea2onw1tgk" path="res://screens/shop/upgrades/drill_upgrades/spiralUpg.tres" id="1_kbpvx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l4p55"]
+load_path = "res://.godot/imported/spiral.png-815fef0a878679a41f2d611d2f6193b7.ctex"
 
 [resource]
 script = ExtResource("1_gif4a")
 upgradeName = "Spiral"
 upgradeDesc = "Significantly Increase Drill Damage"
-upgIcon = ExtResource("2_kbpvx")
+upgIcon = SubResource("CompressedTexture2D_l4p55")
 upgradeCost = 30
+app = ExtResource("1_kbpvx")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"
