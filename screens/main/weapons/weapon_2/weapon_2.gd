@@ -3,6 +3,7 @@ extends Node2D
 @export var laser_parent: Node
 var laser_scene := preload("uid://by4ms12lc0wr5")
 @onready var laser_spawn_point: Marker2D = %LaserSpawnPoint
+@onready var weapon_sprite: AnimatedSprite2D = %WeaponSprite
 
 const SECONDS_BETWEEN_SHOTS := 3.75
 const DAMAGE := 1
@@ -27,8 +28,17 @@ func _physics_process(_delta: float) -> void:
 				closest_distance = distance_to_target
 
 		if closest_target != null:
+			weapon_sprite.play(&"shoot")
+
+			await get_tree().create_timer(0.3).timeout # Wait for the animation to play
+
 			var laser: Node2D = laser_scene.instantiate()
 			laser.damage = DAMAGE
 			laser.direction = laser_spawn_point.global_position.direction_to(closest_target.global_position)
 			laser_parent.add_child(laser)
 			laser.global_position = laser_spawn_point.global_position
+
+
+func _on_weapon_sprite_animation_finished() -> void:
+	if weapon_sprite.animation == &"shoot":
+		weapon_sprite.play(&"idle")

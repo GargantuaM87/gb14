@@ -54,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 	var cell: Level.Cell = level.level_data.get(target_tile)
 	_set_player_animation(cell != null && cell.type == Level.CellType.DIRT)
 
-	if not is_just_pressed && Util.time - last_move_time < TILE_MOVEMENT_DELAY:
+	if !is_just_pressed && Util.time - last_move_time < TILE_MOVEMENT_DELAY:
 		return
 
 	if cell == null || cell.type == Level.CellType.EMPTY:

@@ -1,29 +1,75 @@
 [gd_scene format=3 uid="uid://dcrgtteg0il0g"]
 
 [ext_resource type="Script" uid="uid://bbhnu75aihyi0" path="res://screens/main/weapons/weapon_2/weapon_2.gd" id="1_28wgx"]
+[ext_resource type="Texture2D" uid="uid://bf7u07pqtm2x1" path="res://screens/main/weapons/weapon_2/lazer.png" id="2_isvnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evhrb"]
+atlas = ExtResource("2_isvnm")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbid1"]
+atlas = ExtResource("2_isvnm")
+region = Rect2(16, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20u18"]
+atlas = ExtResource("2_isvnm")
+region = Rect2(16, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uho6n"]
+atlas = ExtResource("2_isvnm")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqhja"]
+atlas = ExtResource("2_isvnm")
+region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0do01"]
+atlas = ExtResource("2_isvnm")
+region = Rect2(48, 128, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wo8oe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evhrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbid1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20u18")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uho6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqhja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0do01")
+}],
+"loop": 0,
+"name": &"shoot",
+"speed": 7.0
+}]
 
 [node name="Weapon2" type="Node2D" unique_id=258549074]
 script = ExtResource("1_28wgx")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=536989947]
-offset_left = -3.0
-offset_top = -1.0
-offset_right = 3.0
-offset_bottom = 2.0
-color = Color(0.6988686, 0.2747209, 0.009831187, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=555541350]
-offset_left = -1.0
-offset_top = -12.0
-offset_right = 1.0
-color = Color(0.6988686, 0.2747209, 0.009831187, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=956333669]
-offset_left = -2.0
-offset_top = -4.0
-offset_right = 2.0
-color = Color(0.6988686, 0.2747209, 0.009831187, 1)
-
 [node name="LaserSpawnPoint" type="Marker2D" parent="." unique_id=469191458]
 unique_name_in_owner = true
-position = Vector2(0, -12)
+position = Vector2(0, -19)
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="." unique_id=1332606325]
+unique_name_in_owner = true
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_wo8oe")
+animation = &"shoot"
+autoplay = "idle"
+
+[connection signal="animation_finished" from="WeaponSprite" to="." method="_on_weapon_sprite_animation_finished"]
