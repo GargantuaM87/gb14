@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dxmfm0d5pmloh"]
 
 [ext_resource type="Script" uid="uid://dyuu34a42520n" path="res://screens/main/monsters/monster_3/monster_3.gd" id="1_u5njp"]
+[ext_resource type="Shader" uid="uid://3vtwujduk7aq" path="res://screens/main/monsters/monster_3/flash_white.gdshader" id="2_syl38"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5njp"]
+resource_local_to_scene = true
+shader = ExtResource("2_syl38")
+shader_parameter/flash_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbx3x"]
 size = Vector2(8, 8)
@@ -9,82 +15,86 @@ size = Vector2(8, 8)
 script = ExtResource("1_u5njp")
 base_hp = 4
 
-[node name="Level1" type="Node2D" parent="." unique_id=2068851307]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2099305430]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_u5njp")
+
+[node name="Level1" type="Node2D" parent="CanvasGroup" unique_id=2068851307]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="Level1" unique_id=1642742124]
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup/Level1" unique_id=1642742124]
 offset_left = -2.0
 offset_top = -1.0
 offset_right = 2.0
 offset_bottom = 1.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Level1" unique_id=296455790]
+[node name="ColorRect2" type="ColorRect" parent="CanvasGroup/Level1" unique_id=296455790]
 offset_left = -1.0
 offset_top = -2.0
 offset_right = 1.0
 offset_bottom = 2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="Level2" type="Node2D" parent="." unique_id=510813782]
+[node name="Level2" type="Node2D" parent="CanvasGroup" unique_id=510813782]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="Level2" unique_id=150101139]
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup/Level2" unique_id=150101139]
 offset_left = -3.0
 offset_top = -2.0
 offset_right = 3.0
 offset_bottom = 2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Level2" unique_id=1599921571]
+[node name="ColorRect2" type="ColorRect" parent="CanvasGroup/Level2" unique_id=1599921571]
 offset_left = -2.0
 offset_top = -3.0
 offset_right = 2.0
 offset_bottom = 3.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="Level3" type="Node2D" parent="." unique_id=1909304624]
+[node name="Level3" type="Node2D" parent="CanvasGroup" unique_id=1909304624]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="Level3" unique_id=2002469732]
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup/Level3" unique_id=2002469732]
 offset_left = -4.0
 offset_top = -2.0
 offset_right = 4.0
 offset_bottom = 2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="Level3" unique_id=683751936]
+[node name="ColorRect3" type="ColorRect" parent="CanvasGroup/Level3" unique_id=683751936]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0
 offset_bottom = 3.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Level3" unique_id=497719697]
+[node name="ColorRect2" type="ColorRect" parent="CanvasGroup/Level3" unique_id=497719697]
 offset_left = -2.0
 offset_top = -4.0
 offset_right = 2.0
 offset_bottom = 4.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="Level4" type="Node2D" parent="." unique_id=1970302173]
+[node name="Level4" type="Node2D" parent="CanvasGroup" unique_id=1970302173]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="Level4" unique_id=1313544547]
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup/Level4" unique_id=1313544547]
 offset_left = -5.0
 offset_top = -2.0
 offset_right = 5.0
 offset_bottom = 2.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="Level4" unique_id=1977210240]
+[node name="ColorRect3" type="ColorRect" parent="CanvasGroup/Level4" unique_id=1977210240]
 offset_left = -4.0
 offset_top = -4.0
 offset_right = 4.0
 offset_bottom = 4.0
 color = Color(0.7806013, 0.26119012, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Level4" unique_id=1929768387]
+[node name="ColorRect2" type="ColorRect" parent="CanvasGroup/Level4" unique_id=1929768387]
 offset_left = -2.0
 offset_top = -5.0
 offset_right = 2.0
