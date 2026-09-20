@@ -1,30 +1,56 @@
 [gd_scene format=3 uid="uid://dd3m6c26vhrem"]
 
 [ext_resource type="Script" uid="uid://drbccs82u72od" path="res://screens/main/weapons/weapon_1/projectile_1.gd" id="1_e8ick"]
+[ext_resource type="Texture2D" uid="uid://b1v7wbpp66rin" path="res://screens/main/weapons/weapon_1/weapon_1.png" id="2_bhrfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbx3x"]
-size = Vector2(4, 4)
+size = Vector2(5, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bffcg"]
+atlas = ExtResource("2_bhrfa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34vxa"]
+atlas = ExtResource("2_bhrfa")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq1dm"]
+atlas = ExtResource("2_bhrfa")
+region = Rect2(32, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wo8oe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bffcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34vxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq1dm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Projectile1" type="Node2D" unique_id=594172827]
 script = ExtResource("1_e8ick")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1564045298]
-offset_left = -2.0
-offset_top = -1.0
-offset_right = 2.0
-offset_bottom = 1.0
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=2097654049]
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = 2.0
-
 [node name="Area2D" type="Area2D" parent="." unique_id=544019410]
+position = Vector2(1, 2)
 collision_layer = 16
 collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1109386636]
+position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_vbx3x")
+
+[node name="ProjectileSprite" type="AnimatedSprite2D" parent="." unique_id=1545150415]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_wo8oe")
+autoplay = "default"
+offset = Vector2(9, -9)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

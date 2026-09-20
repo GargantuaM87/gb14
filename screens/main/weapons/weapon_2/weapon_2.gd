@@ -30,11 +30,12 @@ func _physics_process(_delta: float) -> void:
 		if closest_target != null:
 			weapon_sprite.play(&"shoot")
 
-			await get_tree().create_timer(0.3).timeout # Wait for the animation to play
-
 			var laser: Node2D = laser_scene.instantiate()
 			laser.damage = DAMAGE
 			laser.direction = laser_spawn_point.global_position.direction_to(closest_target.global_position)
+
+			await get_tree().create_timer(0.3).timeout # Wait for the animation to play
+			
 			laser_parent.add_child(laser)
 			laser.global_position = laser_spawn_point.global_position
 

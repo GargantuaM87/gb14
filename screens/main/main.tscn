@@ -59,7 +59,8 @@ visible = false
 upgrades = {
 "RepairShop": null,
 "WeaponShp": null,
-"repairshop": null
+"repairshop": null,
+"weaponshop": NodePath("WeaponTree")
 }
 
 [node name="ShopNotification" parent="ScreenOverlay" unique_id=536382147 instance=ExtResource("5_vhluw")]
@@ -69,11 +70,6 @@ position = Vector2(133, 131)
 
 [node name="WaveCountdownTimer" type="Timer" parent="." unique_id=674317358]
 autostart = true
-
-[node name="Player" parent="." unique_id=390699115 node_paths=PackedStringArray("level") instance=ExtResource("4_tubg1")]
-unique_name_in_owner = true
-position = Vector2(3, 37)
-level = NodePath("../Level/Level")
 
 [node name="Level" type="Node2D" parent="." unique_id=1027958237]
 
@@ -103,5 +99,10 @@ projectile_spawn_node_path = NodePath("..")
 [node name="Weapon2" parent="Weapons" unique_id=274074307 node_paths=PackedStringArray("laser_parent") instance=ExtResource("11_weapon2")]
 position = Vector2(22, 45)
 laser_parent = NodePath("..")
+
+[node name="Player" parent="." unique_id=390699115 node_paths=PackedStringArray("level") instance=ExtResource("4_tubg1")]
+unique_name_in_owner = true
+position = Vector2(3, 37)
+level = NodePath("../Level/Level")
 
 [connection signal="timeout" from="WaveCountdownTimer" to="." method="_on_wave_countdown_timer_timeout"]

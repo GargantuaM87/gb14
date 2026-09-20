@@ -1,23 +1,61 @@
 [gd_scene format=3 uid="uid://cfsrsyc2pvi34"]
 
 [ext_resource type="Script" uid="uid://cua7673ficwse" path="res://screens/main/weapons/weapon_1/weapon_1.gd" id="1_xrubn"]
+[ext_resource type="Texture2D" uid="uid://b1v7wbpp66rin" path="res://screens/main/weapons/weapon_1/weapon_1.png" id="2_i4q1n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsb34"]
+atlas = ExtResource("2_i4q1n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f4bg"]
+atlas = ExtResource("2_i4q1n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wutf5"]
+atlas = ExtResource("2_i4q1n")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj130"]
+atlas = ExtResource("2_i4q1n")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wo8oe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsb34")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f4bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wutf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj130")
+}],
+"loop": 0,
+"name": &"shoot",
+"speed": 6.0
+}]
 
 [node name="Weapon1" type="Node2D" unique_id=258549074]
 script = ExtResource("1_xrubn")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=536989947]
-offset_left = -4.0
-offset_top = -1.0
-offset_right = 4.0
-offset_bottom = 2.0
-color = Color(0.6988686, 0.2747209, 0.009831187, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=555541350]
-offset_left = -2.0
-offset_top = -6.0
-offset_right = 2.0
-color = Color(0.6988686, 0.2747209, 0.009831187, 1)
-
 [node name="ProjectileSpawnPoint" type="Marker2D" parent="." unique_id=469191458]
 unique_name_in_owner = true
-position = Vector2(0, -5)
+position = Vector2(1, -9)
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="." unique_id=1675304043]
+unique_name_in_owner = true
+position = Vector2(-1, -14)
+sprite_frames = SubResource("SpriteFrames_wo8oe")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="animation_finished" from="WeaponSprite" to="." method="_on_weapon_sprite_animation_finished"]

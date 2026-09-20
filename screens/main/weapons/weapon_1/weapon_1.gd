@@ -1,8 +1,10 @@
 extends Node2D
 
+@onready var projectile_spawn_point: Marker2D = %ProjectileSpawnPoint
+@onready var weapon_sprite: AnimatedSprite2D = %WeaponSprite
+
 @export var projectile_spawn_node_path: Node
 var projectile_scene := preload("uid://dd3m6c26vhrem")
-@onready var projectile_spawn_point: Marker2D = %ProjectileSpawnPoint
 
 const SECONDS_BETWEEN_SHOTS := 1.75
 const DAMAGE := 1
@@ -27,8 +29,18 @@ func _physics_process(_delta: float) -> void:
 				closest_distance = distance_to_target
 
 		if closest_target != null:
+			weapon_sprite.play(&"shoot")
+
 			var projectile: Node2D = projectile_scene.instantiate()
 			projectile.damage = DAMAGE
 			projectile.direction = projectile_spawn_point.global_position.direction_to(closest_target.global_position)
+
+			await get_tree().create_timer(0.2).timeout # Wait for the animation to play
+
 			projectile_spawn_node_path.add_child(projectile)
 			projectile.global_position = projectile_spawn_point.global_position
+
+
+func _on_weapon_sprite_animation_finished() -> void:
+	if weapon_sprite.animation == &"shoot":
+		weapon_sprite.play(&"idle")
