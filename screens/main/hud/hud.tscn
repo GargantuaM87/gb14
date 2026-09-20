@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://n75qnkc85lnl" path="res://screens/main/hud/hud.gd" id="1_qivny"]
 [ext_resource type="FontFile" uid="uid://lngqtr531ilb" path="res://fonts/Silkscreen-Regular.ttf" id="2_xn5oh"]
+[ext_resource type="PackedScene" uid="uid://e0565w78uyo7" path="res://screens/main/hud/hp_bar/hp_bar.tscn" id="3_vhxo2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vhxo2"]
+font = ExtResource("2_xn5oh")
+font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_vbx3x"]
 font = ExtResource("2_xn5oh")
@@ -10,52 +15,139 @@ font_size = 8
 [node name="Hud" type="Node2D" unique_id=299411011]
 script = ExtResource("1_qivny")
 
-[node name="HFlowContainer" type="HFlowContainer" parent="." unique_id=638899999]
-offset_left = 2.0
-offset_right = 158.0
-offset_bottom = 15.0
-
-[node name="Label" type="Label" parent="HFlowContainer" unique_id=1411664318]
-layout_mode = 2
-text = "Money:"
-label_settings = SubResource("LabelSettings_vbx3x")
-
-[node name="MoneyLabel" type="Label" parent="HFlowContainer" unique_id=1365757514]
+[node name="MoneyLabel" type="Label" parent="." unique_id=1365757514]
 unique_name_in_owner = true
-layout_mode = 2
+offset_left = 4.0
+offset_right = 27.0
+offset_bottom = 11.0
 text = "$123"
-label_settings = SubResource("LabelSettings_vbx3x")
+label_settings = SubResource("LabelSettings_vhxo2")
 
-[node name="HFlowContainer2" type="HFlowContainer" parent="." unique_id=1195863706]
-offset_left = 2.0
-offset_top = 12.0
-offset_right = 158.0
-offset_bottom = 27.0
+[node name="Node2D" type="Node2D" parent="." unique_id=2066511950]
+position = Vector2(9, 0)
 
-[node name="Label" type="Label" parent="HFlowContainer2" unique_id=467641913]
-layout_mode = 2
-text = "Next wave in:"
-label_settings = SubResource("LabelSettings_vbx3x")
-
-[node name="TimeLeftLabel" type="Label" parent="HFlowContainer2" unique_id=161722390]
+[node name="TimeLeftLabel" type="Label" parent="Node2D" unique_id=161722390]
 unique_name_in_owner = true
-layout_mode = 2
+offset_left = 63.0
+offset_right = 84.0
+offset_bottom = 11.0
 text = "0:59"
 label_settings = SubResource("LabelSettings_vbx3x")
 
-[node name="HFlowContainer3" type="HFlowContainer" parent="." unique_id=1395047117]
-offset_left = 2.0
-offset_top = 24.0
-offset_right = 158.0
-offset_bottom = 39.0
+[node name="MonsterIcon" type="Node2D" parent="Node2D" unique_id=1426012153]
 
-[node name="Label" type="Label" parent="HFlowContainer3" unique_id=27315457]
-layout_mode = 2
-text = "Shield:"
-label_settings = SubResource("LabelSettings_vbx3x")
+[node name="ColorRect" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=349768401]
+offset_left = 50.0
+offset_top = 2.0
+offset_right = 51.0
+offset_bottom = 3.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
 
-[node name="ShieldHpLabel" type="Label" parent="HFlowContainer3" unique_id=1310569586]
+[node name="ColorRect13" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=14110527]
+offset_left = 50.0
+offset_top = 8.0
+offset_right = 51.0
+offset_bottom = 9.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=609519772]
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 57.0
+offset_bottom = 9.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=631027074]
+offset_left = 51.0
+offset_top = 9.0
+offset_right = 53.0
+offset_bottom = 10.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect16" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=1509080097]
+offset_left = 54.0
+offset_top = 9.0
+offset_right = 56.0
+offset_bottom = 10.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=1366926295]
+offset_left = 48.0
+offset_top = 7.0
+offset_right = 49.0
+offset_bottom = 9.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=746354118]
+offset_left = 58.0
+offset_top = 7.0
+offset_right = 59.0
+offset_bottom = 9.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=57823499]
+offset_left = 50.0
+offset_top = 7.0
+offset_right = 57.0
+offset_bottom = 8.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=1256132074]
+offset_left = 51.0
+offset_top = 3.0
+offset_right = 52.0
+offset_bottom = 4.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=1694798718]
+offset_left = 55.0
+offset_top = 3.0
+offset_right = 56.0
+offset_bottom = 4.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=402635040]
+offset_left = 56.0
+offset_top = 2.0
+offset_right = 57.0
+offset_bottom = 3.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=83266304]
+offset_left = 50.0
+offset_top = 4.0
+offset_right = 57.0
+offset_bottom = 5.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=1262654767]
+offset_left = 49.0
+offset_top = 5.0
+offset_right = 51.0
+offset_bottom = 6.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=2138941361]
+offset_left = 48.0
+offset_top = 6.0
+offset_right = 59.0
+offset_bottom = 7.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=2134537767]
+offset_left = 52.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 6.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Node2D/MonsterIcon" unique_id=164021762]
+offset_left = 56.0
+offset_top = 5.0
+offset_right = 58.0
+offset_bottom = 6.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="HpBar" parent="." unique_id=1728626231 instance=ExtResource("3_vhxo2")]
 unique_name_in_owner = true
-layout_mode = 2
-text = "100 HP"
-label_settings = SubResource("LabelSettings_vbx3x")
+position = Vector2(136, 7)

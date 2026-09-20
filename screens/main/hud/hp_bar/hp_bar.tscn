@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://e0565w78uyo7"]
+
+[ext_resource type="FontFile" uid="uid://lngqtr531ilb" path="res://fonts/Silkscreen-Regular.ttf" id="1_h1fbb"]
+[ext_resource type="Script" uid="uid://c1fun0f0am6hx" path="res://screens/main/hud/hp_bar/hp_bar.gd" id="1_oblnk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h1fbb"]
+font = ExtResource("1_h1fbb")
+font_size = 8
+font_color = Color(0.13333334, 0.11764706, 0.019607844, 1)
+
+[node name="HpBar" type="Node2D" unique_id=1728626231]
+script = ExtResource("1_oblnk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1595531815]
+offset_left = -18.0
+offset_top = -5.0
+offset_right = 22.0
+offset_bottom = 4.0
+color = Color(0.20784314, 0.2784314, 0.3019608, 1)
+
+[node name="MaxHPBar" type="ColorRect" parent="." unique_id=1448673403]
+unique_name_in_owner = true
+offset_left = -17.0
+offset_top = -4.0
+offset_right = 21.0
+offset_bottom = 3.0
+color = Color(0.9098039, 0.9137255, 0.7411765, 1)
+
+[node name="HPBar" type="ColorRect" parent="." unique_id=1078998059]
+unique_name_in_owner = true
+offset_left = -17.0
+offset_top = -4.0
+offset_right = 2.0
+offset_bottom = 3.0
+color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
+[node name="ShieldHpLabel" type="Label" parent="." unique_id=1199888789]
+unique_name_in_owner = true
+offset_left = -17.0
+offset_top = -7.0
+offset_right = 21.0
+offset_bottom = 4.0
+text = "100 HP"
+label_settings = SubResource("LabelSettings_h1fbb")
+horizontal_alignment = 1

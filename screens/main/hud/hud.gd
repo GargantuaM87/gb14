@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var money_label: Label = %MoneyLabel
 @onready var time_left_label: Label = %TimeLeftLabel
-@onready var shield_hp_label: Label = %ShieldHpLabel
+@onready var hp_bar: HPBar = %HpBar
 
 
 func _ready() -> void:
@@ -24,4 +24,5 @@ func _on_seconds_until_next_wave_changed() -> void:
 	time_left_label.text = str(minutes).pad_zeros(1) + ":" + str(seconds).pad_zeros(2)
 
 func _on_shield_health_changed() -> void:
-	shield_hp_label.text = str(GlobalState.shield_health) + " HP"
+	hp_bar.max_hp = GlobalState.max_shield_health
+	hp_bar.hp = GlobalState.shield_health
