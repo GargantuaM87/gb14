@@ -4,9 +4,7 @@ extends Node2D
 
 var unlockedUpgrades : Dictionary[String, bool] = {
 	"reflection1" = false,
-	"reflection2" = false,
-	"shockwave1" = false,
-	"shockwave2" = false
+	"reflection2" = false
 }
 var ignoreDamage := false
 
@@ -45,8 +43,3 @@ func ignore_damage() -> void:
 	
 	if randomNum <= chance:
 		ignoreDamage = true
-		
-# Work out this logic later
-func emit_shockwave() -> void:
-	pass
-	
