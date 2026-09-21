@@ -19,6 +19,8 @@ var sfx_shield_damage_1: AudioStream = preload("uid://dgghys3gkh28u")
 var sfx_shield_damage_2: AudioStream = preload("uid://bovb02j8cil6a")
 var sfx_shoot_1: AudioStream = preload("uid://cd03trynpjjbm")
 var sfx_shoot_2: AudioStream = preload("uid://begfy1oki2xej")
+var sfx_menu_click: AudioStream = preload("uid://h5qyn3biih2x")
+var sfx_menu_hover: AudioStream = preload("uid://d2ti4bu66acxn")
 
 const NOT_DRILL_COOLDOWN_SECONDS := 0.1
 var _last_not_drill_time := -10.0
