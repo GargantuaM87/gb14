@@ -59,6 +59,10 @@ func play_fx_menu_upgrade() -> void:
 	play_sfx(sfx_menu_click, -1.0, 2.5)
 
 
+func play_sfx_cant_afford() -> void:
+	play_sfx(sfx_shoot_1, db_to_linear(10.0), 0.8)
+
+
 func play_sfx_menu_hover() -> void:
 	play_sfx(sfx_menu_hover, db_to_linear(10.0))
 

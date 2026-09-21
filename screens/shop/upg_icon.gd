@@ -59,8 +59,6 @@ func unlock_upgrade() -> void:
 	if !upgResource:
 		return
 
-	SfxManager.play_fx_menu_upgrade()
-
 	if upgResource.isUnlocked == true:
 		return
 		
@@ -68,9 +66,14 @@ func unlock_upgrade() -> void:
 		if GlobalState.money >= upgResource.upgradeCost:
 			upgResource.isUnlocked = true
 			GlobalState.money -= upgResource.upgradeCost
+			SfxManager.play_fx_menu_upgrade()
 			set_style()
 			if upgResource.app:
 				upgResource.app.apply_upgrade()
+		else:
+			SfxManager.play_sfx_cant_afford()
+	else:
+		SfxManager.play_sfx_cant_afford()
 
 func _on_button_pressed() -> void:
 	unlock_upgrade()
