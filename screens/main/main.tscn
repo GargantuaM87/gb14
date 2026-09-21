@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://nt1fgb4fshec" path="res://screens/main/weapon_manager.gd" id="10_ijdnk"]
 [ext_resource type="PackedScene" uid="uid://cc56p4dmpnqpv" path="res://screens/main/level/level.tscn" id="10_yg3ed"]
 [ext_resource type="PackedScene" uid="uid://dcrgtteg0il0g" path="res://screens/main/weapons/weapon_2/weapon_2.tscn" id="11_weapon2"]
+[ext_resource type="AudioStream" uid="uid://b3i0n5arvpkx5" path="res://music/NormalSlow.mp3" id="14_3k8jn"]
+[ext_resource type="Script" uid="uid://dj26ho7eemvbt" path="res://screens/main/music.gd" id="14_scaea"]
+[ext_resource type="AudioStream" uid="uid://dl7rn16ida2w" path="res://music/EnemyWave.mp3" id="15_scaea"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggonf"]
 shader = ExtResource("1_j5age")
@@ -124,5 +127,22 @@ laser_parent = NodePath("..")
 unique_name_in_owner = true
 position = Vector2(3, 37)
 level = NodePath("../Level/Level")
+
+[node name="Music" type="Node2D" parent="." unique_id=1950149268]
+unique_name_in_owner = true
+script = ExtResource("14_scaea")
+
+[node name="MusicPlayerNormal" type="AudioStreamPlayer" parent="Music" unique_id=327491755]
+unique_name_in_owner = true
+stream = ExtResource("14_3k8jn")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="MusicPlayerWave" type="AudioStreamPlayer" parent="Music" unique_id=850613779]
+unique_name_in_owner = true
+stream = ExtResource("15_scaea")
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="timeout" from="WaveCountdownTimer" to="." method="_on_wave_countdown_timer_timeout"]

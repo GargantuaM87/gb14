@@ -23,6 +23,7 @@ func take_damage(damage: int) -> void:
 	hp -= damage
 
 	if hp <= 0:
+		SfxManager.play_sfx_enemy_die()
 		queue_free()
 	else:
 		flash_white()

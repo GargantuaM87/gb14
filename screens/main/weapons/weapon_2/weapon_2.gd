@@ -38,6 +38,7 @@ func _physics_process(_delta: float) -> void:
 			
 			laser_parent.add_child(laser)
 			laser.global_position = laser_spawn_point.global_position
+			SfxManager.play_sfx_laser_shoot()
 
 
 func _on_weapon_sprite_animation_finished() -> void:

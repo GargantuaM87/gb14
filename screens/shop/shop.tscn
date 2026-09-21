@@ -41,7 +41,7 @@ upgrades = {
 }
 
 [node name="SelectionPanel" type="Panel" parent="." unique_id=1484621643]
-visible = false
+visible = true
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0
@@ -330,6 +330,7 @@ label_settings = SubResource("LabelSettings_tmpma")
 autowrap_mode = 3
 
 [node name="DrillTree" type="Panel" parent="." unique_id=2147074321]
+visible = false
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0

@@ -97,3 +97,4 @@ func _shoot() -> void:
 	var projectile := PROJECTILE_SCENE.instantiate() as Node2D
 	get_parent().add_child(projectile)
 	projectile.global_position = projectile_spawn_point.global_position
+	SfxManager.play_sfx_shoot()

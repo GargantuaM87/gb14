@@ -16,7 +16,10 @@ func _ready() -> void:
 
 func _on_monster_hit_shield(damage: int) -> void:
 	if !ignoreDamage:
+		var previous_shield_health := GlobalState.shield_health
 		GlobalState.shield_health -= damage
+		if GlobalState.shield_health < previous_shield_health:
+			SfxManager.play_sfx_shield_damage()
 	else:
 		ignoreDamage = false
 	#if GlobalState.shield_health <= GlobalState.max_shield_health * 0.25:

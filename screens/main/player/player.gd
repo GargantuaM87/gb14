@@ -59,12 +59,21 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	if cell == null || cell.type == Level.CellType.EMPTY:
+		var moved := tile_position != Vector2(target_tile)
 		tile_position = Vector2(target_tile)
 		_update_self_position()
+		if moved:
+			SfxManager.play_sfx_move()
+		return
+
+	if cell.type == Level.CellType.UNBREAKABLE:
+		SfxManager.play_sfx_not_drill()
 		return
 
 	if cell.type != Level.CellType.DIRT:
 		return
+
+	SfxManager.play_sfx_drill()
 	
 	assert(drills_per_second > 0.0 && drill_damage > 0)
 

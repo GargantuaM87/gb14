@@ -39,6 +39,7 @@ func _physics_process(_delta: float) -> void:
 
 			projectile_spawn_node_path.add_child(projectile)
 			projectile.global_position = projectile_spawn_point.global_position
+			SfxManager.play_sfx_rocket_shoot()
 
 
 func _on_weapon_sprite_animation_finished() -> void:
