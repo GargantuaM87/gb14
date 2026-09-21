@@ -17,6 +17,7 @@ func _ready() -> void:
 func _wander() -> void:
 	while is_inside_tree():
 		var direction := _get_direction()
+		person.scale.x = -1.0 if direction < 0.0 else 1.0
 		var move_duration := randf_range(MIN_MOVE_DURATION, MAX_MOVE_DURATION)
 		var target_x := person.position.x + direction * MOVE_SPEED * move_duration
 

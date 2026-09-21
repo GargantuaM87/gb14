@@ -20,7 +20,7 @@ func _on_visibility_changed() -> void:
 		set_upgrade_pointer(0)
 
 func _process(_delta: float) -> void:
-	if !visible:
+	if GlobalState.is_game_over || !visible:
 		return
 
 	queue_redraw()

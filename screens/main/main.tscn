@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cgwt5ibxdbyq4" path="res://screens/shop/shop.tscn" id="9_j6p4r"]
 [ext_resource type="Script" uid="uid://nt1fgb4fshec" path="res://screens/main/weapon_manager.gd" id="10_ijdnk"]
 [ext_resource type="PackedScene" uid="uid://cc56p4dmpnqpv" path="res://screens/main/level/level.tscn" id="10_yg3ed"]
+[ext_resource type="Texture2D" uid="uid://bld4n3kvuy2jn" path="res://screens/main/level/house1.png" id="11_5sgjv"]
 [ext_resource type="PackedScene" uid="uid://dcrgtteg0il0g" path="res://screens/main/weapons/weapon_2/weapon_2.tscn" id="11_weapon2"]
+[ext_resource type="Texture2D" uid="uid://b0uv1klusyojl" path="res://screens/main/level/house2.png" id="12_itvh2"]
 [ext_resource type="AudioStream" uid="uid://b3i0n5arvpkx5" path="res://music/NormalSlow.mp3" id="14_3k8jn"]
 [ext_resource type="Script" uid="uid://dj26ho7eemvbt" path="res://screens/main/music.gd" id="14_scaea"]
 [ext_resource type="AudioStream" uid="uid://dl7rn16ida2w" path="res://music/EnemyWave.mp3" id="15_scaea"]
@@ -85,7 +87,7 @@ autostart = true
 [node name="Level" type="Node2D" parent="." unique_id=1027958237]
 
 [node name="Shield" parent="Level" unique_id=465698921 instance=ExtResource("6_qne8x")]
-position = Vector2(-1, 22)
+position = Vector2(-1, 16)
 
 [node name="Ground" parent="Level" unique_id=1403974766 instance=ExtResource("7_4nmqe")]
 unique_name_in_owner = true
@@ -93,6 +95,41 @@ position = Vector2(0, 48)
 
 [node name="Level" parent="Level" unique_id=1072253959 instance=ExtResource("10_yg3ed")]
 position = Vector2(80, 49)
+
+[node name="House1" type="Sprite2D" parent="Level" unique_id=1259150588]
+position = Vector2(-58, 18)
+texture = ExtResource("11_5sgjv")
+centered = false
+
+[node name="House7" type="Sprite2D" parent="Level" unique_id=1117670541]
+position = Vector2(328, 18)
+texture = ExtResource("11_5sgjv")
+centered = false
+
+[node name="House4" type="Sprite2D" parent="Level" unique_id=457665634]
+position = Vector2(-155, 18)
+texture = ExtResource("11_5sgjv")
+centered = false
+
+[node name="House2" type="Sprite2D" parent="Level" unique_id=594094775]
+position = Vector2(151, 18)
+texture = ExtResource("11_5sgjv")
+centered = false
+
+[node name="House3" type="Sprite2D" parent="Level" unique_id=1083544588]
+position = Vector2(31, 31)
+texture = ExtResource("12_itvh2")
+centered = false
+
+[node name="House5" type="Sprite2D" parent="Level" unique_id=1199198455]
+position = Vector2(237, 31)
+texture = ExtResource("12_itvh2")
+centered = false
+
+[node name="House6" type="Sprite2D" parent="Level" unique_id=1794258340]
+position = Vector2(-239, 31)
+texture = ExtResource("12_itvh2")
+centered = false
 
 [node name="Monsters" type="Node2D" parent="." unique_id=1462785049]
 unique_name_in_owner = true

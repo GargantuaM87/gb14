@@ -5,12 +5,12 @@ extends Node2D
 @onready var hpbar: ColorRect = %HPBar
 @onready var shield_hp_label: Label = %ShieldHpLabel
 
-@export var hp := 100:
+@export var hp: int = GlobalState.INITIAL_MAX_SHIELD_HEALTH:
 	set(value):
 		hp = maxi(value, 0)
 		_update_hp_bar()
 
-@export var max_hp := 100:
+@export var max_hp: int = GlobalState.INITIAL_MAX_SHIELD_HEALTH:
 	set(value):
 		max_hp = maxi(value, 1)
 		_update_hp_bar()

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bhw1hs81656av"]
+
+[ext_resource type="Script" uid="uid://c4ds71rnl60vc" path="res://screens/game_won/game_won.gd" id="1_di4vt"]
+[ext_resource type="FontFile" uid="uid://lngqtr531ilb" path="res://fonts/Silkscreen-Regular.ttf" id="2_4u5yi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1eo8e"]
+font = ExtResource("2_4u5yi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_oabwu"]
+font = ExtResource("2_4u5yi")
+font_size = 8
+
+[node name="GameWon" type="Node2D" unique_id=188424095]
+script = ExtResource("1_di4vt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=202463502]
+offset_right = 160.0
+offset_bottom = 144.0
+color = Color(0.13333334, 0.11764706, 0.019607844, 1)
+
+[node name="Label" type="Label" parent="." unique_id=354417563]
+offset_top = 41.0
+offset_right = 160.0
+offset_bottom = 62.0
+text = "Game WON!!"
+label_settings = SubResource("LabelSettings_1eo8e")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=2008600122]
+offset_top = 65.0
+offset_right = 160.0
+offset_bottom = 88.0
+text = "The village is saved."
+label_settings = SubResource("LabelSettings_oabwu")
+horizontal_alignment = 1
+
+[node name="PlayAgainLabel" type="Label" parent="." unique_id=1841447426]
+unique_name_in_owner = true
+offset_top = 95.0
+offset_right = 160.0
+offset_bottom = 118.0
+text = "Press A to play endless"
+label_settings = SubResource("LabelSettings_oabwu")
+horizontal_alignment = 1

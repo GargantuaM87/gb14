@@ -56,7 +56,7 @@ func set_parent(parent: UpgradeResource) -> void:
 	self.parent = parent
 	
 func unlock_upgrade() -> void:
-	if !upgResource:
+	if GlobalState.is_game_over || !upgResource:
 		return
 
 	if upgResource.isUnlocked == true:

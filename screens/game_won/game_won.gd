@@ -1,4 +1,4 @@
-class_name GameOver
+class_name GameWon
 extends Node2D
 
 signal restart_requested

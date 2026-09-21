@@ -13,12 +13,14 @@ var selectionCounter = 0
 var currentState: ShopState = ShopState.SELECT
 
 func _process(_delta: float) -> void:
-	if !GlobalState.is_shop_open:
+	if GlobalState.is_game_over || !GlobalState.is_shop_open:
 		return
 	
 	if Input.is_action_just_pressed("b_button") and currentState == ShopState.SELECT:
 		SfxManager.play_sfx_menu_hover()
 		await get_tree().process_frame # Avoid the same button being processed by main too.
+		if GlobalState.is_game_over:
+			return
 		GlobalState.is_shop_open = false
 		hide()
 	# When the player is selecting a shop to enter
@@ -50,14 +52,22 @@ func scroll_shop() -> void:
 		call_deferred("enter_shop", shops[selectionCounter].name)
 
 func enter_shop(name: String) -> void:
+	if GlobalState.is_game_over:
+		return
+
 	selectionPanel.hide()
 	upgrades[name.to_lower()].show()
 	currentState = ShopState.IN_SELECTION
 	
 func handle_shop() -> void:
+	if GlobalState.is_game_over:
+		return
+
 	if Input.is_action_just_pressed("b_button"):
 		SfxManager.play_sfx_menu_hover()
 		await get_tree().process_frame
+		if GlobalState.is_game_over:
+			return
 		upgrades[shops[selectionCounter].name.to_lower()].hide()
 		selectionPanel.show()
 		currentState = ShopState.SELECT

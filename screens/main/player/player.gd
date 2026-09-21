@@ -33,6 +33,10 @@ func _update_self_position() -> void:
 		last_move_time = Util.time
 
 func _physics_process(_delta: float) -> void:
+	if GlobalState.is_game_over:
+		_set_player_animation(false)
+		return
+
 	if GlobalState.is_shop_open:
 		_set_player_animation(false)
 		return

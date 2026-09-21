@@ -18,7 +18,6 @@ class MonsterType:
 @onready var music: Music = %Music
 @onready var game_over: GameOver = %GameOver
 
-const WAVE_LENGTH_SECONDS := 60
 const BASE_MONSTER_COUNT := 3
 const SPAWN_X_MIN := -80.0
 const SPAWN_X_MAX := 80.0
@@ -30,13 +29,19 @@ var monster_types: Array[MonsterType] = [
 
 var _wave_monsters_remaining := 0
 var _game_won := false
+var _game_over := false
 
 func _ready() -> void:
-	_set_wave_state(0, false)
+	EventBus.shield_health_changed.connect(_on_shield_health_changed)
+	game_over.restart_requested.connect(_on_game_over_restart_requested)
+	_set_wave_state(GlobalState.INITIAL_WAVE, false)
 	_update_player_ground_state()
-	GlobalState.seconds_until_next_wave = WAVE_LENGTH_SECONDS
+	GlobalState.seconds_until_next_wave = GlobalState.WAVE_LENGTH_SECONDS
 
 func _process(_delta: float) -> void:
+	if _game_over:
+		return
+
 	var above_ground := _update_player_ground_state()
 	if above_ground:
 		set_look_up(true)
@@ -45,6 +50,8 @@ func _process(_delta: float) -> void:
 
 			if Input.is_action_just_pressed("b_button"):
 				await get_tree().process_frame # Avoid the same button being processed by the shop too.
+				if _game_over:
+					return
 				GlobalState.is_shop_open = true
 				shop.show()
 				SfxManager.play_sfx_menu_click()
@@ -131,7 +138,7 @@ func _on_wave_monster_tree_exited() -> void:
 func _finish_wave() -> void:
 	_set_wave_state(GlobalState.current_wave, false)
 	_wave_monsters_remaining = 0
-	GlobalState.seconds_until_next_wave = WAVE_LENGTH_SECONDS
+	GlobalState.seconds_until_next_wave = GlobalState.WAVE_LENGTH_SECONDS
 	music.start_normal()
 
 	if GlobalState.current_wave >= GlobalState.max_wave_count:
@@ -142,6 +149,33 @@ func game_won() -> void:
 		return
 	_game_won = true
 	print("Game won!")
+
+func _on_shield_health_changed() -> void:
+	if GlobalState.shield_health > 0 || _game_over:
+		return
+
+	_game_over = true
+	GlobalState.is_game_over = true
+	GlobalState.is_shop_open = false
+	shop.hide()
+	shop_notification.hide()
+
+	game_over.show()
+	game_over.modulate.a = 0.0
+	create_tween().tween_property(game_over, "modulate:a", 1.0, 2.0)
+	game_over.begin_restart_sequence()
+
+func _on_game_over_restart_requested() -> void:
+	if !_game_over:
+		return
+
+	for upgrade_icon in get_tree().get_nodes_in_group("upgrades"):
+		var upgrade_resource := upgrade_icon.get("upgResource") as UpgradeResource
+		if upgrade_resource:
+			upgrade_resource.isUnlocked = false
+
+	GlobalState.reset_for_new_run()
+	get_tree().reload_current_scene()
 
 func _set_wave_state(wave: int, in_progress: bool) -> void:
 	GlobalState.current_wave = wave
