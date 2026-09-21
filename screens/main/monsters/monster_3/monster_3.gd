@@ -38,9 +38,14 @@ func _update_level_visual() -> void:
 	assert(max_hp > 0)
 	var health_ratio := 0.0
 	health_ratio = clampf(float(hp) / float(max_hp), 0.0, 1.0)
-	var active_level_index := clampi(ceili(health_ratio * levels.size()) - 1, 0, levels.size() - 1)
+	var active_level_index := clampi(levels.size() - ceili(health_ratio * levels.size()), 0, levels.size() - 1)
 	for i in range(levels.size()):
-		levels[i].visible = i == active_level_index
+		var is_active := i == active_level_index
+		levels[i].visible = is_active
+
+		var area := levels[i].get_node("Area2D") as Area2D
+		area.set_deferred("monitoring", is_active)
+		area.set_deferred("monitorable", is_active)
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	if is_queued_for_deletion():

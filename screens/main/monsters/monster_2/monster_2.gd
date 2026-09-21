@@ -1,5 +1,7 @@
 extends Monster
 
+@onready var projectile_spawn_point: Marker2D = %ProjectileSpawnPoint
+
 @export var spawn_descent_distance := 40.0
 
 const PROJECTILE_SCENE: PackedScene = preload("uid://bgc7ptaqd8lxg")
@@ -15,7 +17,6 @@ const MAX_DOWNWARD_MOVES := 3
 
 func _ready() -> void:
 	_move()
-
 
 func _move() -> void:
 	var spawn_x := global_position.x
@@ -95,4 +96,4 @@ func _shoot() -> void:
 
 	var projectile := PROJECTILE_SCENE.instantiate() as Node2D
 	get_parent().add_child(projectile)
-	projectile.global_position = global_position
+	projectile.global_position = projectile_spawn_point.global_position

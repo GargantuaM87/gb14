@@ -3,13 +3,23 @@ extends Node2D
 @onready var projectile_sprite: AnimatedSprite2D = %ProjectileSprite
 
 const SPEED := 50.0
+const ROCKET_ANGLE_STEP_DEGREES := 22.5
+const MAX_ROCKET_INDEX := 3
 
 var damage := 1
 var direction := Vector2.UP
 var lifetime_secs := 10.0
 
 func _ready() -> void:
-	projectile_sprite.rotation = Vector2.UP.angle_to(direction)
+	var angle_from_up_degrees := absf(rad_to_deg(Vector2.UP.angle_to(direction)))
+	var rocket_index := clampi(
+		roundi(angle_from_up_degrees / ROCKET_ANGLE_STEP_DEGREES),
+		0,
+		MAX_ROCKET_INDEX
+	) + 1
+
+	projectile_sprite.flip_h = direction.x > 0.0
+	projectile_sprite.play(StringName("rocket_%d" % rocket_index))
 
 func _process(delta: float) -> void:
 	position += direction * SPEED * delta
