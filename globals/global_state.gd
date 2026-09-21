@@ -17,5 +17,16 @@ var shield_health := max_shield_health:
 			shield_health = value
 		EventBus.trigger_shield_health_changed()
 
+var max_wave_count := 5
+var current_wave := 0
+var wave_in_progress := false
+
+var is_player_above_ground := false:
+	set(value):
+		if is_player_above_ground == value:
+			return
+		is_player_above_ground = value
+		EventBus.trigger_player_above_ground_changed()
+
 var is_shop_open := false
 var player: Player = null

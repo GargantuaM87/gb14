@@ -16,6 +16,7 @@ class MonsterType:
 @onready var shop: Node2D = %Shop
 @onready var shop_notification: Node2D = %ShopNotification
 @onready var music: Music = %Music
+@onready var game_over: GameOver = %GameOver
 
 const WAVE_LENGTH_SECONDS := 60
 const BASE_MONSTER_COUNT := 3
@@ -24,19 +25,20 @@ const SPAWN_X_MAX := 80.0
 var monster_types: Array[MonsterType] = [
 	MonsterType.new(preload("uid://bapq6tesgu84k"), 1),
 	MonsterType.new(preload("uid://tprv2crptn14"), 2),
-	MonsterType.new(preload("uid://dxmfm0d5pmloh"), 4),
+	MonsterType.new(preload("uid://dxmfm0d5pmloh"), 3),
 ]
 
-var current_wave := 0
 var _wave_monsters_remaining := 0
-var _wave_in_progress := false
+var _game_won := false
 
 func _ready() -> void:
-	current_wave = 0
+	_set_wave_state(0, false)
+	_update_player_ground_state()
 	GlobalState.seconds_until_next_wave = WAVE_LENGTH_SECONDS
 
 func _process(_delta: float) -> void:
-	if is_above_ground():
+	var above_ground := _update_player_ground_state()
+	if above_ground:
 		set_look_up(true)
 		if !GlobalState.is_shop_open:
 			shop_notification.show()
@@ -69,7 +71,7 @@ func set_look_up(enabled: bool) -> void:
 	offset_tween.tween_property(camera, "offset", target_offset, 1.0)
 
 func _on_wave_countdown_timer_timeout() -> void:
-	if _wave_in_progress:
+	if GlobalState.wave_in_progress || _game_won:
 		return
 
 	# Let the timer stay at 0:00 for a second before starting the next countdown.
@@ -79,17 +81,19 @@ func _on_wave_countdown_timer_timeout() -> void:
 		GlobalState.seconds_until_next_wave -= 1
 
 func spawn_monster_wave() -> void:
-	current_wave += 1
-	_wave_in_progress = true
+	if GlobalState.current_wave >= GlobalState.max_wave_count:
+		return
+
+	_set_wave_state(GlobalState.current_wave + 1, true)
 	GlobalState.seconds_until_next_wave = 0
 	music.start_wave()
 
 	var unlocked_monster_scenes: Array[PackedScene] = []
 	for monster_type: MonsterType in monster_types:
-		if current_wave >= monster_type.first_wave:
+		if GlobalState.current_wave >= monster_type.first_wave:
 			unlocked_monster_scenes.append(monster_type.scene)
 
-	var monster_count := BASE_MONSTER_COUNT + current_wave - 1
+	var monster_count := BASE_MONSTER_COUNT + GlobalState.current_wave - 1
 	_wave_monsters_remaining = monster_count
 	var wave_monster_scenes: Array[PackedScene] = []
 
@@ -110,14 +114,14 @@ func spawn_monster_wave() -> void:
 
 	for i in range(monster_count):
 		var monster := wave_monster_scenes[i].instantiate() as Monster
-		monster.initialize_for_wave(current_wave)
+		monster.initialize_for_wave(GlobalState.current_wave)
 		monster.global_position.y = monster_spawn_position.global_position.y
 		monster.global_position.x = monster_spawn_position.global_position.x + spawn_x_offsets[i] + randf_range(-2.0, 2.0)
 		monster.tree_exited.connect(_on_wave_monster_tree_exited)
 		monsters.add_child(monster)
 
 func _on_wave_monster_tree_exited() -> void:
-	if !_wave_in_progress:
+	if !GlobalState.wave_in_progress:
 		return
 
 	_wave_monsters_remaining -= 1
@@ -125,10 +129,29 @@ func _on_wave_monster_tree_exited() -> void:
 		_finish_wave()
 
 func _finish_wave() -> void:
-	_wave_in_progress = false
+	_set_wave_state(GlobalState.current_wave, false)
 	_wave_monsters_remaining = 0
 	GlobalState.seconds_until_next_wave = WAVE_LENGTH_SECONDS
 	music.start_normal()
+
+	if GlobalState.current_wave >= GlobalState.max_wave_count:
+		game_won()
+
+func game_won() -> void:
+	if _game_won:
+		return
+	_game_won = true
+	print("Game won!")
+
+func _set_wave_state(wave: int, in_progress: bool) -> void:
+	GlobalState.current_wave = wave
+	GlobalState.wave_in_progress = in_progress
+	EventBus.trigger_wave_state_changed()
+
+func _update_player_ground_state() -> bool:
+	var above_ground := is_above_ground()
+	GlobalState.is_player_above_ground = above_ground
+	return above_ground
 
 func is_above_ground() -> bool:
 	return player.global_position.y < ground.global_position.y

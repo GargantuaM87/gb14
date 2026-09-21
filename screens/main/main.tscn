@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://br13io0f3rxhf" path="res://screens/main/shop_notification/shop_notification.tscn" id="5_vhluw"]
 [ext_resource type="PackedScene" uid="uid://ba0ckknomqk44" path="res://screens/main/shield/shield.tscn" id="6_qne8x"]
 [ext_resource type="PackedScene" uid="uid://d1ok0fbbbbv7x" path="res://screens/main/ground/ground.tscn" id="7_4nmqe"]
+[ext_resource type="PackedScene" uid="uid://d12cn10q8onf" path="res://screens/game_over/game_over.tscn" id="7_sk5nr"]
 [ext_resource type="PackedScene" uid="uid://cfsrsyc2pvi34" path="res://screens/main/weapons/weapon_1/weapon_1.tscn" id="8_126cu"]
 [ext_resource type="PackedScene" uid="uid://cgwt5ibxdbyq4" path="res://screens/shop/shop.tscn" id="9_j6p4r"]
 [ext_resource type="Script" uid="uid://nt1fgb4fshec" path="res://screens/main/weapon_manager.gd" id="10_ijdnk"]
@@ -73,6 +74,10 @@ upgrades = {
 unique_name_in_owner = true
 visible = false
 position = Vector2(133, 131)
+
+[node name="GameOver" parent="ScreenOverlay" unique_id=188424095 instance=ExtResource("7_sk5nr")]
+unique_name_in_owner = true
+visible = false
 
 [node name="WaveCountdownTimer" type="Timer" parent="." unique_id=674317358]
 autostart = true

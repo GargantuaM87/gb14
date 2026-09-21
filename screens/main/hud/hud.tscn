@@ -8,6 +8,11 @@
 font = ExtResource("2_xn5oh")
 font_size = 8
 
+[sub_resource type="LabelSettings" id="LabelSettings_lwxxp"]
+font = ExtResource("2_xn5oh")
+font_size = 8
+font_color = Color(0.7882353, 0.6784314, 0.1882353, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_vbx3x"]
 font = ExtResource("2_xn5oh")
 font_size = 8
@@ -32,7 +37,17 @@ offset_left = 63.0
 offset_right = 84.0
 offset_bottom = 11.0
 text = "0:59"
+label_settings = SubResource("LabelSettings_lwxxp")
+
+[node name="WaveCountLabel" type="Label" parent="Node2D" unique_id=161364024]
+unique_name_in_owner = true
+offset_left = -9.0
+offset_top = 11.0
+offset_right = 141.0
+offset_bottom = 22.0
+text = "Wave 1/5"
 label_settings = SubResource("LabelSettings_vbx3x")
+horizontal_alignment = 1
 
 [node name="MonsterIcon" type="Node2D" parent="Node2D" unique_id=1426012153]
 

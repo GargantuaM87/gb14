@@ -2,6 +2,8 @@ extends Node
 
 signal money_changed()
 signal seconds_until_next_wave_changed()
+signal wave_state_changed()
+signal player_above_ground_changed()
 signal monster_hit_shield(damage: int)
 signal shield_health_changed()
 signal shield_upgraded(upgrade : String)
@@ -12,6 +14,12 @@ func trigger_money_changed() -> void:
 
 func trigger_seconds_until_next_wave_changed() -> void:
 	seconds_until_next_wave_changed.emit()
+
+func trigger_wave_state_changed() -> void:
+	wave_state_changed.emit()
+
+func trigger_player_above_ground_changed() -> void:
+	player_above_ground_changed.emit()
 
 func trigger_monster_hit_shield(damage: int) -> void:
 	monster_hit_shield.emit(damage)
