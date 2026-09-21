@@ -14,15 +14,17 @@ extends PanelContainer
 			add_theme_stylebox_override("panel", UPGRADE_ICON_STYLEBOX)
 			textureRect.texture = upgResource.upgIcon
 
-@export var lockColorBorder: Color
-@export var unlockColorBorder: Color
-
 @onready var textureRect: TextureRect = $TextureRect
 
 
 var parent: UpgradeResource
+var is_selected := false
 
 const UPGRADE_ICON_STYLEBOX = preload("res://screens/shop/upgrades/upg_icon_style.tres")
+const AVAILABLE_BACKGROUND_COLOR := Color(0.35, 0.35, 0.35, 1.0)
+const PURCHASED_BACKGROUND_COLOR := Color(0.65, 0.65, 0.65, 1.0)
+const UNSELECTED_BORDER_COLOR := Color.BLACK
+const SELECTED_BORDER_COLOR := Color.WHITE
 
 func _ready() -> void:
 	if not upgResource:
@@ -40,13 +42,15 @@ func get_center():
 
 func set_style():
 	var styleBox: StyleBoxFlat = get_theme_stylebox("panel").duplicate()
-	
-	if upgResource.isUnlocked:
-		styleBox.border_color = unlockColorBorder
-	else:
-		styleBox.border_color = lockColorBorder
+
+	styleBox.bg_color = PURCHASED_BACKGROUND_COLOR if upgResource.isUnlocked else AVAILABLE_BACKGROUND_COLOR
+	styleBox.border_color = SELECTED_BORDER_COLOR if is_selected else UNSELECTED_BORDER_COLOR
 		
 	add_theme_stylebox_override("panel", styleBox)
+
+func set_selected(selected: bool) -> void:
+	is_selected = selected
+	set_style()
 	
 func set_parent(parent: UpgradeResource) -> void:
 	self.parent = parent

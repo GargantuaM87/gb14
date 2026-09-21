@@ -22,8 +22,8 @@ buses/default_bus_layout="uid://bwujqvoqm2yqa"
 [autoload]
 
 EventBus="*uid://da76vvmshvieq"
-GlobalState="*uid://c72uxoaqctasp"
 Util="*uid://jbbsuyq1oss7"
+GlobalState="*uid://c72uxoaqctasp"
 SfxManager="*uid://br4ych28hwarf"
 
 [display]

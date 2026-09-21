@@ -4,9 +4,8 @@ extends Panel
 @onready var uDesc = $UpgradeInfo/Desc
 @onready var uCost = $UpgradeInfo/Cost
 
-var upgrades : Array[PanelContainer]
+var upgrades: Array[PanelContainer]
 var upgradePointer := 0
-
 
 
 func _ready() -> void:
@@ -35,16 +34,18 @@ func _process(_delta: float) -> void:
 		pass
 	
 	if visible and Input.is_action_just_pressed("a_button"):
-		upgrades[upgradePointer].unlock_upgrade()
+		var node = upgrades[upgradePointer]
+		node.unlock_upgrade()
+		node.set_selected(true)
 
 # Change the upgrade pointer
-func set_upgrade_pointer(value : int) -> void:
+func set_upgrade_pointer(value: int) -> void:
 	handle_upgrade_pointer(false)
 	upgradePointer = wrapi(value, 0, upgrades.size())
 	handle_upgrade_pointer(true)
 
 # Update the nodes that are accessed by the upgrade pointer
-func handle_upgrade_pointer(enabled : bool) -> void:
+func handle_upgrade_pointer(enabled: bool) -> void:
 	var node = upgrades[upgradePointer]
 	
 	if !node:
@@ -54,15 +55,7 @@ func handle_upgrade_pointer(enabled : bool) -> void:
 	uDesc.text = node.upgResource.upgradeDesc
 	uCost.text = "Cost: " + str(node.upgResource.upgradeCost)
 	
-	if node.upgResource.isUnlocked:
-		return
-	
-	var color = Color.WHITE if enabled else Color.BLACK
-	
-	var styleBox : StyleBoxFlat = node.get_theme_stylebox("panel").duplicate()
-	styleBox.border_color = color
-		
-	node.add_theme_stylebox_override("panel", styleBox)
+	node.set_selected(enabled)
 
 # Draw lines between upgrade nodes
 func _draw() -> void:

@@ -1,7 +1,7 @@
 extends Node
 
 var moneyMult = 1
-var money := 0:
+var money := 0 if Util.is_exported_build() else 10:
 	set(value):
 		money = value
 		EventBus.trigger_money_changed()
@@ -18,4 +18,4 @@ var shield_health := max_shield_health:
 		EventBus.trigger_shield_health_changed()
 
 var is_shop_open := false
-var player : Player = null
+var player: Player = null
