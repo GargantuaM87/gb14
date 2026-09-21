@@ -52,14 +52,16 @@ func set_parent(parent : UpgradeResource) -> void:
 	self.parent = parent
 	
 func unlock_upgrade() -> void:
+	if upgResource.isUnlocked == true:
+		return
+		
 	if !parent or (parent and parent.isUnlocked):
 		if GlobalState.money >= upgResource.upgradeCost:
 			upgResource.isUnlocked = true
 			GlobalState.money -= upgResource.upgradeCost
 			set_style()
-		
-		if !upgResource.app:
-			upgResource.app.apply_upgrade()
+			if upgResource.app:
+				upgResource.app.apply_upgrade()
 
 func _on_button_pressed() -> void:
 	unlock_upgrade()

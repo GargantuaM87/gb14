@@ -4,6 +4,8 @@ signal money_changed()
 signal seconds_until_next_wave_changed()
 signal monster_hit_shield(damage: int)
 signal shield_health_changed()
+signal shield_upgraded(upgrade : String)
+signal weapon_upgraded(upgrade : String)
 
 func trigger_money_changed() -> void:
 	money_changed.emit()
@@ -16,3 +18,9 @@ func trigger_monster_hit_shield(damage: int) -> void:
 
 func trigger_shield_health_changed() -> void:
 	shield_health_changed.emit()
+
+func trigger_shield_upgrade(upgrade : String) -> void:
+	shield_upgraded.emit(upgrade)
+
+func trigger_weapon_upgrade(upgrade : String) -> void:
+	weapon_upgraded.emit(upgrade)

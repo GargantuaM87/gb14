@@ -74,7 +74,7 @@ func _draw() -> void:
 			
 			targetNode.set_parent(node.upgResource)
 			
-			draw_line(sourcePos, targetPos, color, 2.0)
+			# draw_line(sourcePos, targetPos, color, 2.0)
 			
 # Return node with the given resource
 func get_node_with_resource(resource):

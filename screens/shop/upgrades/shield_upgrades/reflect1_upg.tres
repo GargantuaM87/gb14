@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://b2wppqpenhun4"]
+
+[ext_resource type="Script" uid="uid://ccpyy3mwkiw6k" path="res://screens/shop/upgrades/shield_upgrades/shield_reflect_upg.gd" id="1_ctt00"]
+
+[resource]
+script = ExtResource("1_ctt00")
+shieldUpgrade = "reflection1"
+metadata/_custom_type_script = "uid://ckpxgl7lpjrsl"

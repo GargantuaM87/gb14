@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://dt7jf5sh7fq7b"]
 
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_657h4"]
+[ext_resource type="Resource" uid="uid://5n4b4oeply38" path="res://screens/shop/upgrades/shield_upgrades/shield_health_upg2.tres" id="1_vpeq2"]
 [ext_resource type="Texture2D" uid="uid://dj3icapnbciqw" path="res://textures/protectorIcon2.png" id="2_q2u7h"]
 
 [resource]
@@ -9,4 +10,5 @@ upgradeName = "Protector II"
 upgradeDesc = "Significantly Increase Max Shield"
 upgIcon = ExtResource("2_q2u7h")
 upgradeCost = 45
+app = ExtResource("1_vpeq2")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

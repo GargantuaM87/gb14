@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ok0fbbbbv7x" path="res://screens/main/ground/ground.tscn" id="7_4nmqe"]
 [ext_resource type="PackedScene" uid="uid://cfsrsyc2pvi34" path="res://screens/main/weapons/weapon_1/weapon_1.tscn" id="8_126cu"]
 [ext_resource type="PackedScene" uid="uid://cgwt5ibxdbyq4" path="res://screens/shop/shop.tscn" id="9_j6p4r"]
+[ext_resource type="Script" uid="uid://nt1fgb4fshec" path="res://screens/main/weapon_manager.gd" id="10_ijdnk"]
 [ext_resource type="PackedScene" uid="uid://cc56p4dmpnqpv" path="res://screens/main/level/level.tscn" id="10_yg3ed"]
 [ext_resource type="PackedScene" uid="uid://dcrgtteg0il0g" path="res://screens/main/weapons/weapon_2/weapon_2.tscn" id="11_weapon2"]
 
@@ -59,7 +60,9 @@ visible = false
 upgrades = {
 "RepairShop": null,
 "WeaponShp": null,
+"drillshop": NodePath("DrillTree"),
 "repairshop": null,
+"shieldshop": NodePath("ShieldTree"),
 "weaponshop": NodePath("WeaponTree")
 }
 
@@ -90,14 +93,31 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(76, -91)
 
-[node name="Weapons" type="Node2D" parent="." unique_id=1352723919]
+[node name="Weapons" type="Node2D" parent="." unique_id=1352723919 node_paths=PackedStringArray("unlockedUpgrades")]
+script = ExtResource("10_ijdnk")
+unlockedUpgrades = {
+"laser": NodePath("ExtraLaser"),
+"rocket": NodePath("ExtraRocket")
+}
 
 [node name="Weapon1" parent="Weapons" unique_id=258549074 node_paths=PackedStringArray("projectile_spawn_node_path") instance=ExtResource("8_126cu")]
 position = Vector2(122, 45)
 projectile_spawn_node_path = NodePath("..")
 
+[node name="ExtraRocket" parent="Weapons" unique_id=1428675799 node_paths=PackedStringArray("projectile_spawn_node_path") instance=ExtResource("8_126cu")]
+process_mode = 4
+visible = false
+position = Vector2(-87, 45)
+projectile_spawn_node_path = NodePath("..")
+
 [node name="Weapon2" parent="Weapons" unique_id=274074307 node_paths=PackedStringArray("laser_parent") instance=ExtResource("11_weapon2")]
 position = Vector2(22, 45)
+laser_parent = NodePath("..")
+
+[node name="ExtraLaser" parent="Weapons" unique_id=63853605 node_paths=PackedStringArray("laser_parent") instance=ExtResource("11_weapon2")]
+process_mode = 4
+visible = false
+position = Vector2(218, 45)
 laser_parent = NodePath("..")
 
 [node name="Player" parent="." unique_id=390699115 node_paths=PackedStringArray("level") instance=ExtResource("4_tubg1")]

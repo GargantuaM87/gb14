@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://bhkaixnqp4ev3"]
+
+[ext_resource type="Script" uid="uid://cx22l4qku02xp" path="res://screens/shop/upgrades/weapon_upgrades/weapon_upg.gd" id="1_ibchn"]
+
+[resource]
+script = ExtResource("1_ibchn")
+upgrade = "rocket"
+metadata/_custom_type_script = "uid://ckpxgl7lpjrsl"

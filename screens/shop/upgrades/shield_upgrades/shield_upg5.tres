@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://bp2vq886url0x"]
 
+[ext_resource type="Resource" uid="uid://fcj7do1u3csw" path="res://screens/shop/upgrades/shield_upgrades/reflect2_upg.tres" id="1_j5d7n"]
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_rea0i"]
 
 [resource]
 script = ExtResource("1_rea0i")
 upgradeName = "Reflection II"
-upgradeDesc = "20% To Reflect Projectiles"
+upgradeDesc = "10% To Reflect Projectiles"
 upgradeCost = 45
+app = ExtResource("1_j5d7n")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"
