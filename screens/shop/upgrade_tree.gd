@@ -13,6 +13,11 @@ func _ready() -> void:
 		if node.is_in_group("upgrades"):
 			upgrades.append(node)
 	set_upgrade_pointer(0)
+	visibility_changed.connect(_on_visibility_changed)
+
+func _on_visibility_changed() -> void:
+	if visible:
+		set_upgrade_pointer(0)
 
 func _process(_delta: float) -> void:
 	if !visible:
