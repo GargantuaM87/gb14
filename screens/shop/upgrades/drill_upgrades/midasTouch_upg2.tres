@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://cpbvwjyk6e3kp"]
+
+[ext_resource type="Script" uid="uid://duiyltdw4muwa" path="res://screens/shop/upgrades/drill_upgrades/gold_upg.gd" id="1_mh1ud"]
+
+[resource]
+script = ExtResource("1_mh1ud")
+goldMultipler = 4
+metadata/_custom_type_script = "uid://ckpxgl7lpjrsl"

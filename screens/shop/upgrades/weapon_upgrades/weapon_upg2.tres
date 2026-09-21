@@ -7,6 +7,6 @@
 script = ExtResource("1_xqhi3")
 upgradeName = "Expansion II"
 upgradeDesc = "Add an extra Laser"
-upgradeCost = 35
+upgradeCost = 15
 app = ExtResource("1_uljrj")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

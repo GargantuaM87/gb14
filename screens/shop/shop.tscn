@@ -41,6 +41,7 @@ upgrades = {
 }
 
 [node name="SelectionPanel" type="Panel" parent="." unique_id=1484621643]
+visible = false
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0
@@ -329,7 +330,6 @@ label_settings = SubResource("LabelSettings_tmpma")
 autowrap_mode = 3
 
 [node name="DrillTree" type="Panel" parent="." unique_id=2147074321]
-visible = false
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0
@@ -375,12 +375,12 @@ layout_mode = 2
 [node name="UpgIcn4" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=996573109 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("23_80ljl")
+upgResource = ExtResource("22_ftonq")
 
 [node name="UpgIcn5" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=398754430 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("22_ftonq")
+upgResource = ExtResource("23_80ljl")
 
 [node name="UpgIcn6" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=993507729 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)

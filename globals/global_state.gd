@@ -1,5 +1,6 @@
 extends Node
 
+var moneyMult = 1
 var money := 0:
 	set(value):
 		money = value

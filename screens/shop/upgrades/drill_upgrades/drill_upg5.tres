@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://e5m7g4vi07hv"]
 
 [ext_resource type="Script" uid="uid://bym3xr1pk5gx2" path="res://screens/shop/upgrade_resource.gd" id="1_2k861"]
+[ext_resource type="Resource" uid="uid://dtl4ptavlcr0u" path="res://screens/shop/upgrades/drill_upgrades/midasTouch_upg1.tres" id="1_h3ij1"]
 [ext_resource type="Resource" uid="uid://beccbvcj837nb" path="res://screens/shop/upgrades/drill_upgrades/drill_upg6.tres" id="2_rce8w"]
-[ext_resource type="Texture2D" uid="uid://iloo4seanfcg" path="res://textures/bombIcon.png" id="3_h3ij1"]
 
 [resource]
 script = ExtResource("1_2k861")
-upgradeName = "Prepared"
-upgradeDesc = "You now carry a bomb!"
-upgIcon = ExtResource("3_h3ij1")
+upgradeName = "Midas Touch"
+upgradeDesc = "You now gain more gold!"
 unlockUpgs = Array[ExtResource("1_2k861")]([ExtResource("2_rce8w")])
-upgradeCost = 45
+upgradeCost = 25
+app = ExtResource("1_h3ij1")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

@@ -7,6 +7,6 @@
 script = ExtResource("1_neqva")
 upgradeName = "Expansion I"
 upgradeDesc = "Add an Extra Rocket Launcher"
-upgradeCost = 35
+upgradeCost = 10
 app = ExtResource("1_3tdva")
 metadata/_custom_type_script = "uid://bym3xr1pk5gx2"

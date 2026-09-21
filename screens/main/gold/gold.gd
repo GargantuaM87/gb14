@@ -9,4 +9,4 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	
 	queue_free()
 
-	GlobalState.money += value
+	GlobalState.money += value * GlobalState.moneyMult

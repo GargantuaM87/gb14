@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_c7ijq")
 upgradeName = "Reflection"
-upgradeDesc = "5% Chance to Reflect Projectiles"
+upgradeDesc = "5% Chance to Ignore Damage"
 upgIcon = ExtResource("3_lb4kn")
 unlockUpgs = Array[ExtResource("1_c7ijq")]([ExtResource("2_4uu31")])
 upgradeCost = 5
