@@ -27,11 +27,12 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("up"):
 		set_upgrade_pointer(upgradePointer - 1)
 		SfxManager.play_sfx_menu_hover()
-	# Implement those later
 	elif Input.is_action_just_pressed("right"):
-		pass
+		if move_horizontal(1):
+			SfxManager.play_sfx_menu_hover()
 	elif Input.is_action_just_pressed("left"):
-		pass
+		if move_horizontal(-1):
+			SfxManager.play_sfx_menu_hover()
 	
 	if visible and Input.is_action_just_pressed("a_button"):
 		var node = upgrades[upgradePointer]
@@ -43,6 +44,30 @@ func set_upgrade_pointer(value: int) -> void:
 	handle_upgrade_pointer(false)
 	upgradePointer = wrapi(value, 0, upgrades.size())
 	handle_upgrade_pointer(true)
+
+# Move to the icon in the same row of the adjacent column.
+func move_horizontal(direction: int) -> bool:
+	var current_node := upgrades[upgradePointer]
+	var current_column := current_node.get_parent()
+	var row := current_column.get_children().find(current_node)
+	var columns := current_column.get_parent().get_children()
+	var column_index := columns.find(current_column)
+	var target_column_index := column_index + direction
+
+	if row < 0 || target_column_index < 0 || target_column_index >= columns.size():
+		return false
+
+	var target_column = columns[target_column_index]
+	if row >= target_column.get_child_count():
+		return false
+
+	var target_node = target_column.get_child(row)
+	var target_pointer := upgrades.find(target_node)
+	if target_pointer == -1:
+		return false
+
+	set_upgrade_pointer(target_pointer)
+	return true
 
 # Update the nodes that are accessed by the upgrade pointer
 func handle_upgrade_pointer(enabled: bool) -> void:
