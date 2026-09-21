@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@export var upgResource : UpgradeResource:
+@export var upgResource: UpgradeResource:
 	set(newValue):
 		upgResource = newValue
 		
@@ -14,13 +14,13 @@ extends PanelContainer
 			add_theme_stylebox_override("panel", UPGRADE_ICON_STYLEBOX)
 			textureRect.texture = upgResource.upgIcon
 
-@export var lockColorBorder : Color
-@export var unlockColorBorder : Color
+@export var lockColorBorder: Color
+@export var unlockColorBorder: Color
 
-@onready var textureRect : TextureRect = $TextureRect
+@onready var textureRect: TextureRect = $TextureRect
 
 
-var parent : UpgradeResource
+var parent: UpgradeResource
 
 const UPGRADE_ICON_STYLEBOX = preload("res://screens/shop/upgrades/upg_icon_style.tres")
 
@@ -39,7 +39,7 @@ func get_center():
 	return size / 2
 
 func set_style():
-	var styleBox : StyleBoxFlat = get_theme_stylebox("panel").duplicate()
+	var styleBox: StyleBoxFlat = get_theme_stylebox("panel").duplicate()
 	
 	if upgResource.isUnlocked:
 		styleBox.border_color = unlockColorBorder
@@ -48,10 +48,15 @@ func set_style():
 		
 	add_theme_stylebox_override("panel", styleBox)
 	
-func set_parent(parent : UpgradeResource) -> void:
+func set_parent(parent: UpgradeResource) -> void:
 	self.parent = parent
 	
 func unlock_upgrade() -> void:
+	if !upgResource:
+		return
+
+	SfxManager.play_fx_menu_upgrade()
+
 	if upgResource.isUnlocked == true:
 		return
 		

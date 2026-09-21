@@ -20,7 +20,7 @@ const RIGHT_DIRT_TILE := Vector2i(2, 3)
 const TOP_DIRT_TILE := Vector2i(3, 3)
 
 const LEVEL_WIDTH := 10 * 3
-const LEVEL_HEIGHT := 8 * 10
+const LEVEL_HEIGHT := 6 * 10
 const TILE_SIZE := 16 # px
 @warning_ignore('integer_division')
 const LEVEL_X_MIN := -LEVEL_WIDTH / 2
@@ -62,9 +62,8 @@ var depths: Array[DepthProperties] = [
 	DepthProperties.new(10, 5, 0.01, 0.20, 0.18, 1),
 	DepthProperties.new(10, 10, 0.05, 0.15, 0.12, 3),
 	DepthProperties.new(10, 15, 0.05, 0.10, 0.10, 5),
-	DepthProperties.new(10, 20, 0.07, 0.07, 0.10, 10),
-	DepthProperties.new(10, 25, 0.08, 0.05, 0.07, 15),
-	DepthProperties.new(100, 25, 0.08, 0.03, 0.07, 20),
+	DepthProperties.new(10, 20, 0.07, 0.07, 0.10, 7),
+	DepthProperties.new(100, 25, 0.08, 0.04, 0.07, 12),
 ]
 
 var level_data: Dictionary[Vector2i, Cell] = {}

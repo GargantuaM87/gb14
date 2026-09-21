@@ -41,7 +41,6 @@ upgrades = {
 }
 
 [node name="SelectionPanel" type="Panel" parent="." unique_id=1484621643]
-visible = true
 offset_top = 15.0
 offset_right = 160.0
 offset_bottom = 129.0

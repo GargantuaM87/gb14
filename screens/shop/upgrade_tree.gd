@@ -15,14 +15,19 @@ func _ready() -> void:
 			upgrades.append(node)
 	set_upgrade_pointer(0)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if !visible:
+		return
+
 	queue_redraw()
 	
 	# For navigating the upgrade nodes
 	if Input.is_action_just_pressed("down"):
 		set_upgrade_pointer(upgradePointer + 1)
+		SfxManager.play_sfx_menu_hover()
 	elif Input.is_action_just_pressed("up"):
 		set_upgrade_pointer(upgradePointer - 1)
+		SfxManager.play_sfx_menu_hover()
 	# Implement those later
 	elif Input.is_action_just_pressed("right"):
 		pass

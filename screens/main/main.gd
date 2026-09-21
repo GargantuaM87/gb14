@@ -17,7 +17,7 @@ class MonsterType:
 @onready var shop_notification: Node2D = %ShopNotification
 @onready var music: Music = %Music
 
-const WAVE_LENGTH_SECONDS := 10
+const WAVE_LENGTH_SECONDS := 60
 const BASE_MONSTER_COUNT := 3
 const SPAWN_X_MIN := -80.0
 const SPAWN_X_MAX := 80.0
@@ -45,6 +45,7 @@ func _process(_delta: float) -> void:
 				await get_tree().process_frame # Avoid the same button being processed by the shop too.
 				GlobalState.is_shop_open = true
 				shop.show()
+				SfxManager.play_sfx_menu_click()
 				shop_notification.hide()
 	else:
 		set_look_up(false)

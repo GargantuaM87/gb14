@@ -51,6 +51,18 @@ func play_sfx(clip: AudioStream, volume_linear: float = -1.0, pitch: float = 1.0
 		sound_player.queue_free()
 
 
+func play_sfx_menu_click() -> void:
+	play_sfx(sfx_menu_click)
+
+
+func play_fx_menu_upgrade() -> void:
+	play_sfx(sfx_menu_click, -1.0, 2.5)
+
+
+func play_sfx_menu_hover() -> void:
+	play_sfx(sfx_menu_hover, db_to_linear(10.0))
+
+
 func play_sfx_gold() -> void:
 	var pitch := randf_range(0.8, 1.2)
 	var clip := [sfx_gold_1, sfx_gold_2, sfx_gold_3, sfx_gold_4].pick_random() as AudioStream
