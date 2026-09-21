@@ -155,7 +155,10 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 upgResource = ExtResource("6_ssed7")
 
-[node name="UpgIcn2" parent="WeaponTree/MarginContainer/HBoxContainer/Layer1" unique_id=1395170560 instance=ExtResource("4_wg7du")]
+[node name="Layer2" type="VBoxContainer" parent="WeaponTree/MarginContainer/HBoxContainer" unique_id=912225660]
+layout_mode = 2
+
+[node name="UpgIcn2" parent="WeaponTree/MarginContainer/HBoxContainer/Layer2" unique_id=1395170560 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 upgResource = ExtResource("7_q1j07")
@@ -350,12 +353,12 @@ upgResource = ExtResource("18_gfbi3")
 [node name="UpgIcn2" parent="DrillTree/MarginContainer/HBoxContainer/Layer1" unique_id=1668073877 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("19_r13bp")
+upgResource = ExtResource("20_alhln")
 
 [node name="UpgIcn3" parent="DrillTree/MarginContainer/HBoxContainer/Layer1" unique_id=1981761816 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("20_alhln")
+upgResource = ExtResource("22_ftonq")
 
 [node name="Layer2" type="VBoxContainer" parent="DrillTree/MarginContainer/HBoxContainer" unique_id=1422796707]
 layout_mode = 2
@@ -363,17 +366,17 @@ layout_mode = 2
 [node name="UpgIcn4" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=996573109 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("22_ftonq")
+upgResource = ExtResource("19_r13bp")
 
 [node name="UpgIcn5" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=398754430 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("23_80ljl")
+upgResource = ExtResource("21_hdt0p")
 
 [node name="UpgIcn6" parent="DrillTree/MarginContainer/HBoxContainer/Layer2" unique_id=993507729 instance=ExtResource("4_wg7du")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-upgResource = ExtResource("21_hdt0p")
+upgResource = ExtResource("23_80ljl")
 
 [node name="UpgradeInfo" type="Panel" parent="DrillTree" unique_id=1113582007]
 layout_mode = 0
