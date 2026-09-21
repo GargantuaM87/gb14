@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_pa2ib")
-maxHealthUpgrade = 80
-repairHealth = 80
+maxHealthUpgrade = 30
+repairHealth = 30
 metadata/_custom_type_script = "uid://ckpxgl7lpjrsl"

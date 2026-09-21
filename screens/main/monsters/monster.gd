@@ -6,15 +6,12 @@ extends Node2D
 @export var base_hp := 1
 
 const DEATH_SCENE: PackedScene = preload("uid://b3q04anuih0or")
-const HP_INCREASE_INTERVAL := 2
-
 var hp := 1
 var max_hp := 1
 var _flash_tween: Tween
 
-func initialize_for_wave(wave_number: int) -> void:
-	var hp_bonus := floori(float(maxi(wave_number - 1, 0)) / HP_INCREASE_INTERVAL)
-	max_hp = maxi(base_hp + hp_bonus, 1)
+func initialize_for_wave(_wave_number: int) -> void:
+	max_hp = maxi(base_hp, 1)
 	hp = max_hp
 
 func take_damage(damage: int) -> void:
