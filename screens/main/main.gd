@@ -20,7 +20,7 @@ class MonsterType:
 @onready var game_won_screen: GameWon = %GameWon
 @onready var wave_countdown_timer: Timer = $WaveCountdownTimer
 
-const BASE_MONSTER_COUNT := 4
+const BASE_MONSTER_COUNT := 5
 const SPAWN_X_MIN := -80.0
 const SPAWN_X_MAX := 80.0
 var monster_types: Array[MonsterType] = [
