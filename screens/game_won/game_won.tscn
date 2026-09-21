@@ -11,6 +11,7 @@ font = ExtResource("2_4u5yi")
 font_size = 8
 
 [node name="GameWon" type="Node2D" unique_id=188424095]
+process_mode = 3
 script = ExtResource("1_di4vt")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=202463502]

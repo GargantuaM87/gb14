@@ -32,8 +32,11 @@ func _on_wave_state_changed() -> void:
 	var wave_number := GlobalState.current_wave
 	if !GlobalState.wave_in_progress:
 		wave_number += 1
-	wave_number = clampi(wave_number, 1, GlobalState.max_wave_count)
-	wave_count_label.text = "Wave %d/%d" % [wave_number, GlobalState.max_wave_count]
+	if GlobalState.is_endless_mode:
+		wave_count_label.text = "Wave %d" % wave_number
+	else:
+		wave_number = clampi(wave_number, 1, GlobalState.max_wave_count)
+		wave_count_label.text = "Wave %d/%d" % [wave_number, GlobalState.max_wave_count]
 
 func _on_player_above_ground_changed() -> void:
 	# Let's just always show it for now

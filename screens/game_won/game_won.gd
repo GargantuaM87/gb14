@@ -1,7 +1,7 @@
 class_name GameWon
 extends Node2D
 
-signal restart_requested
+signal continue_requested
 
 @onready var play_again_label: Label = %PlayAgainLabel
 
@@ -9,6 +9,7 @@ var _can_restart := false
 var _restart_sequence := 0
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	play_again_label.modulate.a = 0.0
 
 func begin_restart_sequence() -> void:
@@ -30,4 +31,4 @@ func begin_restart_sequence() -> void:
 func _process(_delta: float) -> void:
 	if _can_restart && Input.is_action_just_pressed("a_button"):
 		_can_restart = false
-		restart_requested.emit()
+		continue_requested.emit()

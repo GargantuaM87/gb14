@@ -17,6 +17,8 @@ class MonsterType:
 @onready var shop_notification: Node2D = %ShopNotification
 @onready var music: Music = %Music
 @onready var game_over: GameOver = %GameOver
+@onready var game_won_screen: GameWon = %GameWon
+@onready var wave_countdown_timer: Timer = $WaveCountdownTimer
 
 const BASE_MONSTER_COUNT := 3
 const SPAWN_X_MIN := -80.0
@@ -34,6 +36,7 @@ var _game_over := false
 func _ready() -> void:
 	EventBus.shield_health_changed.connect(_on_shield_health_changed)
 	game_over.restart_requested.connect(_on_game_over_restart_requested)
+	game_won_screen.continue_requested.connect(_on_game_won_continue_requested)
 	_set_wave_state(GlobalState.INITIAL_WAVE, false)
 	_update_player_ground_state()
 	GlobalState.seconds_until_next_wave = GlobalState.WAVE_LENGTH_SECONDS
@@ -88,9 +91,6 @@ func _on_wave_countdown_timer_timeout() -> void:
 		GlobalState.seconds_until_next_wave -= 1
 
 func spawn_monster_wave() -> void:
-	if GlobalState.current_wave >= GlobalState.max_wave_count:
-		return
-
 	_set_wave_state(GlobalState.current_wave + 1, true)
 	GlobalState.seconds_until_next_wave = 0
 	music.start_wave()
@@ -141,7 +141,7 @@ func _finish_wave() -> void:
 	GlobalState.seconds_until_next_wave = GlobalState.WAVE_LENGTH_SECONDS
 	music.start_normal()
 
-	if GlobalState.current_wave >= GlobalState.max_wave_count:
+	if GlobalState.current_wave == GlobalState.max_wave_count:
 		game_won()
 
 func game_won() -> void:
@@ -149,6 +149,28 @@ func game_won() -> void:
 		return
 	_game_won = true
 	print("Game won!")
+	GlobalState.is_shop_open = false
+	shop.hide()
+	shop_notification.hide()
+	wave_countdown_timer.stop()
+
+	game_won_screen.show()
+	game_won_screen.modulate.a = 0.0
+	game_won_screen.create_tween().tween_property(game_won_screen, "modulate:a", 1.0, 2.0)
+	game_won_screen.begin_restart_sequence()
+	get_tree().paused = true
+
+func _on_game_won_continue_requested() -> void:
+	if !_game_won:
+		return
+
+	_game_won = false
+	game_won_screen.hide()
+	GlobalState.is_endless_mode = true
+	EventBus.trigger_wave_state_changed()
+	GlobalState.seconds_until_next_wave = GlobalState.WAVE_LENGTH_SECONDS
+	wave_countdown_timer.start()
+	get_tree().paused = false
 
 func _on_shield_health_changed() -> void:
 	if GlobalState.shield_health > 0 || _game_over:

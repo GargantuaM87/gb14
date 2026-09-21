@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ok0fbbbbv7x" path="res://screens/main/ground/ground.tscn" id="7_4nmqe"]
 [ext_resource type="PackedScene" uid="uid://d12cn10q8onf" path="res://screens/game_over/game_over.tscn" id="7_sk5nr"]
 [ext_resource type="PackedScene" uid="uid://cfsrsyc2pvi34" path="res://screens/main/weapons/weapon_1/weapon_1.tscn" id="8_126cu"]
+[ext_resource type="PackedScene" uid="uid://bhw1hs81656av" path="res://screens/game_won/game_won.tscn" id="8_itvh2"]
 [ext_resource type="PackedScene" uid="uid://cgwt5ibxdbyq4" path="res://screens/shop/shop.tscn" id="9_j6p4r"]
 [ext_resource type="Script" uid="uid://nt1fgb4fshec" path="res://screens/main/weapon_manager.gd" id="10_ijdnk"]
 [ext_resource type="PackedScene" uid="uid://cc56p4dmpnqpv" path="res://screens/main/level/level.tscn" id="10_yg3ed"]
@@ -78,6 +79,10 @@ visible = false
 position = Vector2(133, 131)
 
 [node name="GameOver" parent="ScreenOverlay" unique_id=188424095 instance=ExtResource("7_sk5nr")]
+unique_name_in_owner = true
+visible = false
+
+[node name="GameWon" parent="ScreenOverlay" unique_id=969139551 instance=ExtResource("8_itvh2")]
 unique_name_in_owner = true
 visible = false
 

@@ -28,6 +28,7 @@ var shield_health := max_shield_health:
 var max_wave_count := INITIAL_MAX_WAVE_COUNT
 var current_wave := INITIAL_WAVE
 var wave_in_progress := false
+var is_endless_mode := false
 
 var is_player_above_ground := false:
 	set(value):
@@ -49,6 +50,7 @@ func reset_for_new_run() -> void:
 	max_wave_count = INITIAL_MAX_WAVE_COUNT
 	current_wave = INITIAL_WAVE
 	wave_in_progress = false
+	is_endless_mode = false
 	is_player_above_ground = false
 	is_shop_open = false
 	is_game_over = false

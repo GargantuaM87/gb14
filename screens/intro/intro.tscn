@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c5qi0jrkvsu0c"]
+
+[ext_resource type="Script" uid="uid://dmemulverc75g" path="res://screens/intro/intro.gd" id="1_j3x03"]
+[ext_resource type="FontFile" uid="uid://lngqtr531ilb" path="res://fonts/Silkscreen-Regular.ttf" id="2_ufrrs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1eo8e"]
+font = ExtResource("2_ufrrs")
+font_size = 8
+
+[node name="Intro" type="Node2D" unique_id=188424095]
+script = ExtResource("1_j3x03")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=202463502]
+offset_right = 160.0
+offset_bottom = 144.0
+color = Color(0.13333334, 0.11764706, 0.019607844, 1)
+
+[node name="Label" type="Label" parent="." unique_id=354417563]
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 41.0
+text = "Your village is under attack."
+label_settings = SubResource("LabelSettings_1eo8e")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1859802531]
+offset_top = 48.0
+offset_right = 160.0
+offset_bottom = 69.0
+text = "Dig down to find gold."
+label_settings = SubResource("LabelSettings_1eo8e")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1157281486]
+offset_top = 79.0
+offset_right = 160.0
+offset_bottom = 100.0
+text = "Older gold is more valuable."
+label_settings = SubResource("LabelSettings_1eo8e")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=1806036377]
+offset_top = 109.0
+offset_right = 160.0
+offset_bottom = 130.0
+text = "Best of luck."
+label_settings = SubResource("LabelSettings_1eo8e")
+horizontal_alignment = 1
