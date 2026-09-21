@@ -5,6 +5,7 @@ extends Node2D
 
 @export var base_hp := 1
 
+const DEATH_SCENE: PackedScene = preload("uid://b3q04anuih0or")
 const HP_INCREASE_INTERVAL := 2
 
 var hp := 1
@@ -23,6 +24,9 @@ func take_damage(damage: int) -> void:
 	hp -= damage
 
 	if hp <= 0:
+		var death_effect := DEATH_SCENE.instantiate() as Node2D
+		get_parent().add_child(death_effect)
+		death_effect.global_position = global_position
 		SfxManager.play_sfx_enemy_die()
 		queue_free()
 	else:

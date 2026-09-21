@@ -53,7 +53,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"default",
-"speed": 14.0
+"speed": 15.0
 }]
 
 [node name="MonsterDeath" type="Node2D" unique_id=271078229]
@@ -63,7 +63,5 @@ script = ExtResource("1_5xwku")
 position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_vbx3x")
 autoplay = "default"
-frame = 5
-frame_progress = 0.059806436
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

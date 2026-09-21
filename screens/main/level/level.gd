@@ -59,10 +59,10 @@ class DepthProperties:
 		self.gold_value = in_gold_value
 
 var depths: Array[DepthProperties] = [
-	DepthProperties.new(10, 5, 0.01, 0.15, 0.18, 1),
-	DepthProperties.new(10, 10, 0.05, 0.11, 0.12, 3),
-	DepthProperties.new(10, 15, 0.05, 0.08, 0.10, 5),
-	DepthProperties.new(10, 20, 0.07, 0.05, 0.07, 10),
+	DepthProperties.new(10, 5, 0.01, 0.20, 0.18, 1),
+	DepthProperties.new(10, 10, 0.05, 0.15, 0.12, 3),
+	DepthProperties.new(10, 15, 0.05, 0.10, 0.10, 5),
+	DepthProperties.new(10, 20, 0.07, 0.07, 0.10, 10),
 	DepthProperties.new(10, 25, 0.08, 0.05, 0.07, 15),
 	DepthProperties.new(100, 25, 0.08, 0.03, 0.07, 20),
 ]
