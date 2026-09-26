@@ -4,12 +4,18 @@ extends Node2D
 signal restart_requested
 
 @onready var play_again_label: Label = %PlayAgainLabel
+@onready var monsters_killed_label: Label = %MonstersKilledLabel
 
 var _can_restart := false
 var _restart_sequence := 0
 
 func _ready() -> void:
 	play_again_label.modulate.a = 0.0
+	monsters_killed_label.hide()
+
+func set_monster_kill_summary(monsters_killed: int, should_show: bool) -> void:
+	monsters_killed_label.text = "Monsters killed: %d" % monsters_killed
+	monsters_killed_label.visible = should_show
 
 func begin_restart_sequence() -> void:
 	_restart_sequence += 1

@@ -5,6 +5,7 @@ signal seconds_until_next_wave_changed()
 signal wave_state_changed()
 signal player_above_ground_changed()
 signal monster_hit_shield(damage: int)
+signal monster_killed()
 signal shield_health_changed()
 signal shield_upgraded(upgrade : String)
 signal weapon_upgraded(upgrade : String)
@@ -23,6 +24,9 @@ func trigger_player_above_ground_changed() -> void:
 
 func trigger_monster_hit_shield(damage: int) -> void:
 	monster_hit_shield.emit(damage)
+
+func trigger_monster_killed() -> void:
+	monster_killed.emit()
 
 func trigger_shield_health_changed() -> void:
 	shield_health_changed.emit()

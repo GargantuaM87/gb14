@@ -25,6 +25,7 @@ func take_damage(damage: int) -> void:
 		get_parent().add_child(death_effect)
 		death_effect.global_position = global_position
 		SfxManager.play_sfx_enemy_die()
+		EventBus.trigger_monster_killed()
 		queue_free()
 	else:
 		flash_white()

@@ -26,11 +26,20 @@ text = "Game OVER"
 label_settings = SubResource("LabelSettings_1eo8e")
 horizontal_alignment = 1
 
+[node name="MonstersKilledLabel" type="Label" parent="." unique_id=2008600122]
+unique_name_in_owner = true
+offset_top = 65.0
+offset_right = 160.0
+offset_bottom = 88.0
+text = "Monsters killed: 0"
+label_settings = SubResource("LabelSettings_oabwu")
+horizontal_alignment = 1
+
 [node name="PlayAgainLabel" type="Label" parent="." unique_id=1841447426]
 unique_name_in_owner = true
-offset_top = 80.0
+offset_top = 95.0
 offset_right = 160.0
-offset_bottom = 103.0
+offset_bottom = 118.0
 text = "Press A to play again"
 label_settings = SubResource("LabelSettings_oabwu")
 horizontal_alignment = 1

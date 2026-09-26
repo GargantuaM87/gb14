@@ -33,11 +33,13 @@ var monster_types: Array[MonsterType] = [
 ]
 
 var _wave_monsters_remaining := 0
+var _monsters_killed := 0
 var _game_won := false
 var _game_over := false
 
 func _ready() -> void:
 	EventBus.shield_health_changed.connect(_on_shield_health_changed)
+	EventBus.monster_killed.connect(_on_monster_killed)
 	game_over.restart_requested.connect(_on_game_over_restart_requested)
 	game_won_screen.continue_requested.connect(_on_game_won_continue_requested)
 	_set_wave_state(GlobalState.INITIAL_WAVE, false)
@@ -133,6 +135,11 @@ func spawn_monster_wave() -> void:
 		monster.tree_exited.connect(_on_wave_monster_tree_exited)
 		monsters.add_child(monster)
 
+func _on_monster_killed() -> void:
+	if _game_over:
+		return
+	_monsters_killed += 1
+
 func _on_wave_monster_tree_exited() -> void:
 	if _game_over || !GlobalState.wave_in_progress:
 		return
@@ -189,6 +196,7 @@ func _on_shield_health_changed() -> void:
 	shop.hide()
 	shop_notification.hide()
 
+	game_over.set_monster_kill_summary(_monsters_killed, GlobalState.is_endless_mode)
 	game_over.show()
 	game_over.modulate.a = 0.0
 	create_tween().tween_property(game_over, "modulate:a", 1.0, 2.0)
