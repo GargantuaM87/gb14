@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cv5a6vc6okik7"]
 
 [ext_resource type="Script" uid="uid://c8x7ipo3c58ct" path="res://screens/main/main.gd" id="1_h47hb"]
-[ext_resource type="Shader" uid="uid://dmggckpaxtqb6" path="res://screens/main/color_palette.gdshader" id="1_j5age"]
 [ext_resource type="Script" uid="uid://behemfs6ssxgt" path="res://screens/main/camera.gd" id="2_i6tjv"]
 [ext_resource type="PackedScene" uid="uid://dberwleuxd1et" path="res://screens/main/hud/hud.tscn" id="3_4eq7x"]
 [ext_resource type="PackedScene" uid="uid://by0pa4rr2ty8m" path="res://screens/main/player/player.tscn" id="4_tubg1"]
@@ -21,16 +20,6 @@
 [ext_resource type="Script" uid="uid://dj26ho7eemvbt" path="res://screens/main/music.gd" id="14_scaea"]
 [ext_resource type="AudioStream" uid="uid://dl7rn16ida2w" path="res://music/EnemyWave.mp3" id="15_scaea"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggonf"]
-shader = ExtResource("1_j5age")
-shader_parameter/darkest = Color(0.13333334, 0.11764706, 0.019607844, 1)
-shader_parameter/dark = Color(0.20784314, 0.2784314, 0.3019608, 1)
-shader_parameter/light = Color(0.7882353, 0.6784314, 0.1882353, 1)
-shader_parameter/lightest = Color(0.9098039, 0.9137255, 0.7411765, 1)
-shader_parameter/threshold_1 = 0.25
-shader_parameter/threshold_2 = 0.5
-shader_parameter/threshold_3 = 0.75
-
 [node name="Main" type="Node2D" unique_id=574003333]
 script = ExtResource("1_h47hb")
 
@@ -44,18 +33,6 @@ player = NodePath("../Player")
 position = Vector2(8, 42)
 script = ExtResource("2_i6tjv")
 player = NodePath("../../Player")
-
-[node name="PaletteEnforcerLayer" type="CanvasLayer" parent="." unique_id=173367466]
-layer = 1000
-
-[node name="PaletteEnforcer" type="ColorRect" parent="PaletteEnforcerLayer" unique_id=1960881425]
-material = SubResource("ShaderMaterial_ggonf")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="ScreenOverlay" type="CanvasLayer" parent="." unique_id=435230987]
 

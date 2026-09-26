@@ -1,4 +1,7 @@
+class_name IntroScreen
 extends Node2D
+
+signal continue_requested
 
 var _transitioning := false
 
@@ -36,4 +39,4 @@ func _load_main_scene() -> void:
 
 	_transitioning = true
 	set_process(false)
-	get_tree().change_scene_to_file("uid://cv5a6vc6okik7")
+	continue_requested.emit()

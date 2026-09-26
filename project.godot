@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gb14"
-run/main_scene="uid://c5qi0jrkvsu0c"
+run/main_scene="uid://cf8iw3b6vr8xi"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

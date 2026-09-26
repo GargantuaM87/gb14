@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cf8iw3b6vr8xi"]
+
+[ext_resource type="Shader" uid="uid://dmggckpaxtqb6" path="res://screens/main/color_palette.gdshader" id="1_6w0j7"]
+[ext_resource type="Script" uid="uid://cbrhk3y8gqcff" path="res://screens/screen_orchestrator.gd" id="1_lutxo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lutxo"]
+shader = ExtResource("1_6w0j7")
+shader_parameter/darkest = Color(0.13333334, 0.11764706, 0.019607844, 1)
+shader_parameter/dark = Color(0.20784314, 0.2784314, 0.3019608, 1)
+shader_parameter/light = Color(0.7882353, 0.6784314, 0.1882353, 1)
+shader_parameter/lightest = Color(0.9098039, 0.9137255, 0.7411765, 1)
+shader_parameter/threshold_1 = 0.25
+shader_parameter/threshold_2 = 0.5
+shader_parameter/threshold_3 = 0.75
+
+[node name="ScreenOrchestrator" type="Node2D" unique_id=1049417218]
+script = ExtResource("1_lutxo")
+
+[node name="PaletteEnforcerLayer" type="CanvasLayer" parent="." unique_id=759732372]
+layer = 1000
+
+[node name="PaletteEnforcer" type="ColorRect" parent="PaletteEnforcerLayer" unique_id=2077520807]
+material = SubResource("ShaderMaterial_lutxo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CurrentScreen" type="Node2D" parent="." unique_id=1303142667]
+unique_name_in_owner = true

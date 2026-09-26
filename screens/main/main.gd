@@ -1,4 +1,7 @@
+class_name MainScreen
 extends Node2D
+
+signal restart_requested
 
 class MonsterType:
 	var scene: PackedScene
@@ -81,7 +84,7 @@ func set_look_up(enabled: bool) -> void:
 	offset_tween.tween_property(camera, "offset", target_offset, 1.0)
 
 func _on_wave_countdown_timer_timeout() -> void:
-	if GlobalState.wave_in_progress || _game_won:
+	if _game_over || GlobalState.wave_in_progress || _game_won:
 		return
 
 	# Let the timer stay at 0:00 for a second before starting the next countdown.
@@ -91,6 +94,9 @@ func _on_wave_countdown_timer_timeout() -> void:
 		GlobalState.seconds_until_next_wave -= 1
 
 func spawn_monster_wave() -> void:
+	if _game_over || _game_won:
+		return
+
 	_set_wave_state(GlobalState.current_wave + 1, true)
 	GlobalState.seconds_until_next_wave = 0
 	music.start_wave()
@@ -128,7 +134,7 @@ func spawn_monster_wave() -> void:
 		monsters.add_child(monster)
 
 func _on_wave_monster_tree_exited() -> void:
-	if !GlobalState.wave_in_progress:
+	if _game_over || !GlobalState.wave_in_progress:
 		return
 
 	_wave_monsters_remaining -= 1
@@ -136,6 +142,9 @@ func _on_wave_monster_tree_exited() -> void:
 		_finish_wave()
 
 func _finish_wave() -> void:
+	if _game_over:
+		return
+
 	_set_wave_state(GlobalState.current_wave, false)
 	_wave_monsters_remaining = 0
 	GlobalState.seconds_until_next_wave = GlobalState.WAVE_LENGTH_SECONDS
@@ -145,14 +154,13 @@ func _finish_wave() -> void:
 		game_won()
 
 func game_won() -> void:
-	if _game_won:
+	if _game_over || _game_won:
 		return
 	_game_won = true
 	print("Game won!")
 	GlobalState.is_shop_open = false
 	shop.hide()
 	shop_notification.hide()
-	wave_countdown_timer.stop()
 
 	game_won_screen.show()
 	game_won_screen.modulate.a = 0.0
@@ -169,11 +177,10 @@ func _on_game_won_continue_requested() -> void:
 	GlobalState.is_endless_mode = true
 	EventBus.trigger_wave_state_changed()
 	GlobalState.seconds_until_next_wave = GlobalState.WAVE_LENGTH_SECONDS
-	wave_countdown_timer.start()
 	get_tree().paused = false
 
 func _on_shield_health_changed() -> void:
-	if GlobalState.shield_health > 0 || _game_over:
+	if GlobalState.shield_health > 0 || _game_over || _game_won:
 		return
 
 	_game_over = true
@@ -197,7 +204,7 @@ func _on_game_over_restart_requested() -> void:
 			upgrade_resource.isUnlocked = false
 
 	GlobalState.reset_for_new_run()
-	get_tree().reload_current_scene()
+	restart_requested.emit()
 
 func _set_wave_state(wave: int, in_progress: bool) -> void:
 	GlobalState.current_wave = wave
